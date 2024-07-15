@@ -1,0 +1,100 @@
+body {
+    background-color: #F9F9F4;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1em;
+}
+
+
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 10px;
+    padding-right: 10%;
+    color: #8C4416;
+}
+
+.logo>p {
+    margin: 0;
+}
+
+
+.menus {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    padding: 0 20px
+}
+
+.menus button {
+    background: none;
+    border: 1px;
+    margin: 10px;
+    color: #C1904E;
+}
+
+.menus button:hover {
+    background-color: bisque;
+}
+
+.login-btn {
+
+    border: solid 1px #8C4416;
+    border-radius: 5px;
+    color: #8C4416;
+    padding: 6px 12px;
+
+}
+
+.login-btn:hover {
+    background-color: #8c431629;
+}
+
+.signIn-btn {
+    background-color: #8C4416;
+    color: white;
+    border-radius: 5px;
+    padding: 6px 12px;
+    border: none;
+
+}
+
+.signIn-btn:hover {
+    background-color: #9E5F37;
+}
+
+
+
+.footer-wrap {
+    width: 100vw;
+    background-color: #281C1A;
+    margin: 0;
+    color: #a59a8c;
+}
+
+.nav {
+    border-bottom: 1px #a59a8c;
+}
+
+.footer-menu {
+    margin: 1em;
+    color: #a59a8c;
+}
+
+.footer-menu:hover {
+    color: #d7d1c6;
+}
+
+
+.fa-x-twitter,
+.fa-instagram,
+.fa-facebook{
+  margin: 10px
+}
