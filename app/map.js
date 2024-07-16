@@ -36,4 +36,4 @@ function displayResultsOnMap(businesses, map) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', initMap);
+document.addEventListener('DOMContentLoaded', initMap);// Test change
