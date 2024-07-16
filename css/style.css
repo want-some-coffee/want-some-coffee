@@ -1,0 +1,120 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Custom styles for navbar */
+.navbar-dark {
+    background-color: #875f3b !important;
+}
+
+.btn-primary {
+    background-color: #391308 !important;
+    border-color: #391308 !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: #875f3b !important;
+    border-color: #875f3b !important;
+}
+
+
+/* Custom styles for search box */
+.form-control.me-2 {
+    background-color: #e6d9c6;
+    border-color: #391308;
+}
+
+/* search button */
+.btn-outline-success {
+    color: #391308;
+    border-color: #391308;
+}
+
+.btn-outline-success:hover,
+.btn-outline-success:focus,
+.btn-outline-success:active {
+    background-color: #391308;
+    border-color: #391308;
+    color: #fff;
+}
+
+
+/* cafe list img size */ 
+.cafe-list img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+
+/* cafe background */
+.cafe-background {
+    background-image: url('./img/bg.jpg');
+    /* Adjust this path as necessary */
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top right;
+    padding: 20px;
+    /* Adjust padding as necessary */
+}
+
+
+/* cafe title */ 
+.title-cafe {
+    color: #874e31;
+}
+
+.sub-title-cafe {
+    color: #391308;
+    font-size: 1.5rem;
+}
+
+.img-cafe-title {
+    width: 250px;
+}
+
+
+
+
+.place-picker-container {
+    padding: 20px;
+}
+
+
+/* 카페 이미지 carousel */
+.carousel-inner {
+    width: 100%;
+}
+
+.cafe-lists {
+    height: 220px;
+}
+
+/* data texts */
+.data-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.data-txt {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.data-category {
+    background-color: #f8d7da;
+    padding: 4px;
+    border-radius: 3px;
+    display: inline;
+}
+
+
+
+/* button */
+btn-primary {
+    background-color: #391308;
+}
