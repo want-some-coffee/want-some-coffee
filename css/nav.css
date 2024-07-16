@@ -1,6 +1,11 @@
 body {
     background-color: #F9F9F4;
 }
+
+.container-outline {
+    height: 100vh;
+}
+
 .head-nav{
     display: flex;
     justify-content: space-between;
@@ -57,7 +62,6 @@ body {
     flex-direction: row;
     gap: 10px;
     margin: 10px;
-    padding-right: 10%;
     color: #8C4416;
 }
 
@@ -85,7 +89,7 @@ body {
     background-color: bisque;
 }
 
-.sec-btn {
+.btn-login {
 
     border: solid 1px #8C4416;
     border-radius: 5px;
@@ -94,11 +98,11 @@ body {
 
 }
 
-.sec-btn:hover {
+.btn-login:hover {
     background-color: #8c431629;
 }
 
-.pri-btn {
+.btn-signup {
     background-color: #8C4416;
     color: white;
     border-radius: 5px;
@@ -107,7 +111,7 @@ body {
 
 }
 
-.pri-btn:hover {
+.btn-signup:hover {
     background-color: #9E5F37;
 }
 
@@ -140,6 +144,8 @@ body {
     background-color: #281C1A;
     margin: 0;
     color: #a59a8c;
+    position: fixed;
+    bottom: 0;
 }
 
 .nav {
