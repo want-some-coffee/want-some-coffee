@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css"
+    />
+    <!-- fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://kit.fontawesome.com/33f8c7b48f.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/review.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- review start -->
+      <section>
+        <h3 class="head">Reviews</h3>
+        <div class="cafe-name-wrap">
+          <div class="cafe-name">
+            <h6>Cafe name</h6>
+            <p>Read our review guidelines</p>
+          </div>
+          <div class="cafe-score">
+            <img
+              src="css/icon/brwon_coffee-bean-fill.svg"
+              width="24px"
+              height="24px"
+            />
+            <p>4.0</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- coffee bean -->
+      <section class="question">
+        <div class="coffee-bean-wrap">
+          <p>How was your coffee?</p>
+          <div class="coffee-bean">
+            <img
+              src="css/icon/brwon_coffee-bean-fill.svg"
+              width="30px"
+              height="30px"
+            />
+            <img
+              src="css/icon/gray_coffee-bean-fill.svg"
+              width="30px"
+              height="30px"
+            />
+            <img
+              src="css/icon/gray_coffee-bean-fill.svg"
+              width="30px"
+              height="30px"
+            />
+            <img
+              src="css/icon/gray_coffee-bean-fill.svg"
+              width="30px"
+              height="30px"
+            />
+            <img
+              src="css/icon/gray_coffee-bean-fill.svg"
+              width="30px"
+              height="30px"
+            />
+          </div>
+          <p>Good</p>
+        </div>
+        <div class="question2">
+          <p>How was the ambience?</p>
+          <div class="answer2">
+            <div>Good music</div>
+            <div>Good music</div>
+            <div>Good music</div>
+            <div>Good music</div>
+            <div>Good music</div>
+          </div>
+        </div>
+      </section>
+      <!-- text review -->
+      <div class="text-area" id="text-area">
+        <textarea
+          id="text-input"
+          placeholder="Share your experience with us"
+        ></textarea>
+        <p>your review needs at least 80 characters</p>
+      </div>
+
+      <!-- photo -->
+      <div class="photo-zone">
+        <div>
+          <button class="photo-add">
+            <span><i class="fa-regular fa-images"></i></span> Add photo
+          </button>
+        </div>
+        <div class="photo-area">
+          <div class="photo"></div>
+        </div>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="cta-btn-area">
+        <button class="cta-btn">Post</button>
+      </div>
+    </div>
+
+    <script src="app/review.js"></script>
+  </body>
+</html>

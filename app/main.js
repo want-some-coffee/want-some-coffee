@@ -10,3 +10,4 @@ document.addEventListener('DOMContentLoaded', () => {
 =======
 >>>>>>> fec981de25d1f1b9f13ce37a33942f165bbb2273
 document.getElementById('copyRightYear').textContent = new Date().getFullYear();
+// Test change
