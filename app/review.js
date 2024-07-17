@@ -1,41 +1,41 @@
-// // apikey
-// export const yelpApiKey =
-//   "cLCckwvPZ64EAo3l2oCqdkYwO92JumAudkV78b84mY_4StYXylEUG0u4R6exM-pnEv3OGRQK16VM_jvgBWBHTwR0jqrBEmhLOWNYTEuaSoodzEYYMAl2PW9ZWBSOZnYx";
-// export const baseUrl = `https://api.yelp.com/v3/businesses/search?location=Toronto&categories=cafes&limit=10`;
+// apikey
+export const yelpApiKey =
+  "cLCckwvPZ64EAo3l2oCqdkYwO92JumAudkV78b84mY_4StYXylEUG0u4R6exM-pnEv3OGRQK16VM_jvgBWBHTwR0jqrBEmhLOWNYTEuaSoodzEYYMAl2PW9ZWBSOZnYx";
+export const baseUrl = `https://api.yelp.com/v3/businesses/search?location=Toronto&categories=cafes&limit=10`;
 
-// const options = {
-//   method: "GET",
-//   headers: {
-//     Authorization: `Bearer ${yelpApiKey}`,
-//     "Content-Type": "application/json",
-//   },
-// };
+const options = {
+  method: "GET",
+  headers: {
+    Authorization: `Bearer ${yelpApiKey}`,
+    "Content-Type": "application/json",
+  },
+};
 
-// export let cafeList = [];
-// export let totalResults = 0;
+export let cafeList = [];
+export let totalResults = 0;
 
-// // Fetch Yelp data and display in café list area
-// export const getCafes = async (url = baseUrl) => {
-//   try {
-//     const response = await fetch(url, options);
-//     console.log("response:", response);
+// Fetch Yelp data and display in café list area
+export const getCafes = async (url = baseUrl) => {
+  try {
+    const response = await fetch(url, options);
+    console.log("response:", response);
 
-//     if (!response.ok) {
-//       throw new Error(`HTTP error. Status: ${response.status}`);
-//     }
+    if (!response.ok) {
+      throw new Error(`HTTP error. Status: ${response.status}`);
+    }
 
-//     const data = await response.json();
-//     console.log("Data fetched:", data);
+    const data = await response.json();
+    console.log("Data fetched:", data);
 
-//     if (data.businesses && data.businesses.length > 0) {
-//       drawCafeList(data.businesses);
-//     } else {
-//       displayError("No cafés found.", true);
-//     }
-//   } catch (error) {
-//     console.error("Error fetching and parsing data", error);
-//   }
-// };
+    if (data.businesses && data.businesses.length > 0) {
+      drawCafeList(data.businesses);
+    } else {
+      displayError("No cafés found.", true);
+    }
+  } catch (error) {
+    console.error("Error fetching and parsing data", error);
+  }
+};
 
 // ///practice
 // const getLatestReview = () => {
@@ -54,7 +54,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const beans = document.querySelectorAll(".bean");
   const ratingText = document.querySelector(".rating-text");
-  const ratings = ["Bad", "Not Bad", "Good", "Nice", "Perfect"];
+  const ratings = [
+    "Bad 😭 ",
+    "Not Bad 😢",
+    "Good 😊",
+    "Great 🤗",
+    "Perfect 😍",
+  ];
 
   beans.forEach((bean) => {
     bean.addEventListener("mouseover", handleMouseOver);
@@ -88,28 +94,43 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 //  4. ambience -> hover  // selected
+const filterBtns = document.querySelectorAll(".filter-btn");
+
+filterBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    console.log("btn ", btn.textContent);
+    btn.classList.toggle("selected");
+    console.log("class", btn.className);
+  });
+});
 
 //5. text box
 
 //-> word count
 
 const textInput = document.getElementById("text-input");
-const CharCountMessage = document.getElementById("char-count");
+const charCountMessage = document.getElementById("char-count");
 
 textInput.addEventListener("input", () => {
   const textLength = textInput.value.length;
   if (textLength < 80) {
-    CharCountMessage.textContent = `Count: ${textLength}`;
+    charCountMessage.textContent = `Count: ${textLength}`;
+  } else if ((textLength) => 80) {
+    charCountMessage.textContent = `Great!`;
   } else {
-    CharCountMessage.textContent = "";
+    charCountMessage.textContent = "";
   }
 });
 
 //-> constrain:
 //  >> if user click post btn when the  words less than 80 chr, show error message
 
+//ambience -> select toggle
+
 // 6. add photo
-///> if click show modal and able to upload photos
+///> if click show modal popup
+
+//and able to upload photos
 ///>
 
 // 7.click post
