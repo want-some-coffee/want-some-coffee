@@ -20,7 +20,8 @@
 
 .membership-box {
     margin-top: 8px;
-    background-image: url(../images/backgroundimgcolor.jpg);
+    margin-bottom: 0;
+    background-image: url(../img/membership-backgroundimg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -171,6 +172,9 @@
     font-family: "Playwrite AU VIC", cursive;;
 } */
 
+.footer-wrap {
+    position: relative;
+}
 
 @media only screen and (max-width: 540px) {
     .membership-form-box {
