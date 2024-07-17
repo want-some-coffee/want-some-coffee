@@ -1,0 +1,131 @@
+
+.wrapper {
+    text-align: left;
+}
+.main-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.Coffee-image {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    width: 442px;
+    mix-blend-mode: multiply;
+    margin-top: 20px;
+}
+
+.cafe-name {
+    font-size: 30px;
+    }
+
+.itemDetails {
+        background-color: white;
+        max-width: 800px;
+        margin: auto;
+        height: 550px;
+    }
+
+
+.double-top {
+        border-top: 7px double #404040;
+        margin-top: 15px;
+    }
+
+.items-left {
+    padding: 10px 0px 10px 20px;
+    width: 90%;
+    height: 100%;
+    text-align: left;
+}
+
+.items-left h1 {
+    color: #8C4416;
+    font-weight: bold;
+}
+
+.location-details {
+    font-weight: bold;
+}
+
+.divider {
+    border-bottom: 2px solid #404040;
+    height: 2px;
+    width: 35%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.fa-phone {
+    font-size: 12px;
+}
+
+
+.map-direction {
+    color: #8C4416;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+.cafe-image {
+    width:470px;
+    position: relative;
+    left: 290px;
+    bottom: 430px;
+  }
+
+.user-can-do {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+
+.user-can-do i{
+    font-size: 12px;
+    color: #281C1A;
+    margin-top: 25px;
+    text-align: center;
+  }
+
+.fa-solid {
+    font-size: 13px;
+    color:#281C1A; 
+ }
+
+ .general-info {
+    color: #281C1A;
+    font-weight: 600;
+    padding-top: 15px;
+ }
+
+ .cafe-position {
+    position: absolute;
+    position: relative;
+    left: 300px;
+    bottom: 505px;
+    width: 450px;
+    height: 800px;
+ }
+
+
+.card {
+    margin-top: 15px;     
+}
+
+.list-group {
+    display: flex;
+}
+
+.amenities-icons {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    height: 50px;
+}
+
+.amenities-icons i{
+    font-size: 25px;
+    margin-left: 15px;
+}
