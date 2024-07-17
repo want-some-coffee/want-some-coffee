@@ -36,4 +36,8 @@ function displayResultsOnMap(businesses, map) {
     });
 }
 
+<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', initMap);// Test change
+=======
+document.addEventListener('DOMContentLoaded', initMap);
+>>>>>>> fec981de25d1f1b9f13ce37a33942f165bbb2273
