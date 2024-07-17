@@ -55,7 +55,7 @@
 
 .register-container {
     position: absolute;
-    right: -520px;
+    /* right: -520px; */
     width: 500px;
     display: flex;
     flex-direction: column;

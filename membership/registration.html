@@ -111,48 +111,11 @@
     <section class="membership-box">
       <div class="membership-form-box">
 
-        <!--login form-->
-        <div class="login-container" id="login">
-            <div class="membership-top">
-              <span
-                >Don't have an account? <a href="#" onclick="registerBtn()">Sign Up</a></span
-              >
-              <h1>Login</h1>
-            </div>
-            <div class="membership-input-box">
-              <input
-                type="email"
-                class="membership-input-field"
-                placeholder="Email"
-              /><i class="bx bx-user"></i>
-            </div>
-            <div class="membership-input-box">
-              <input
-                type="password"
-                class="membership-input-field"
-                placeholder="Password"
-              /><i class="bx bx-lock-alt"></i>
-            </div>
-            <div class="membership-input-box">
-              <input type="submit" class="membership-submit" value="Sign In" />
-            </div>
-            <div class="membership-two-col">
-              <div class="one">
-                <input type="checkbox" id="login-check" />
-                <label for="login-check">Remember Me</label>
-              </div>
-              <div class="membership-two">
-                <label><a href="#">|Forgot password?</a></label>
-              </div>
-            </div>
-          </div>
-
-
         <!--registration form-->
         <div class="register-container" id="register">
           <div class="membership-top">
             <span
-              >Have an account? <a href="#" onclick="loginBtn()">Login</a></span
+              >Have an account? <a href="login.html">Login</a></span
             >
             <h1>Sign Up</h1>
           </div>
@@ -187,7 +150,7 @@
             /><i class="bx bx-lock-alt"></i>
           </div>
           <div class="membership-input-box">
-            <input type="submit" class="membership-submit" value="Register" onclick="saveData()"/>
+            <input type="submit" class="membership-submit" value="Register" onclick="register()"/>
           </div>
           <div class="membership-two-col">
             <div class="membership-one">
