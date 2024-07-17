@@ -41,7 +41,7 @@
           </div>
           <div class="cafe-score">
             <img
-              src="css/icon/brwon_coffee-bean-fill.svg"
+              src="css/icon/brown_coffee-bean-fill.svg"
               width="24px"
               height="24px"
             />
@@ -55,42 +55,22 @@
         <div class="coffee-bean-wrap">
           <p>How was your coffee?</p>
           <div class="coffee-bean">
-            <img
-              src="css/icon/brwon_coffee-bean-fill.svg"
-              width="30px"
-              height="30px"
-            />
-            <img
-              src="css/icon/gray_coffee-bean-fill.svg"
-              width="30px"
-              height="30px"
-            />
-            <img
-              src="css/icon/gray_coffee-bean-fill.svg"
-              width="30px"
-              height="30px"
-            />
-            <img
-              src="css/icon/gray_coffee-bean-fill.svg"
-              width="30px"
-              height="30px"
-            />
-            <img
-              src="css/icon/gray_coffee-bean-fill.svg"
-              width="30px"
-              height="30px"
-            />
+            <div class="bean" data-index="1"></div>
+            <div class="bean" data-index="2"></div>
+            <div class="bean" data-index="3"></div>
+            <div class="bean" data-index="4"></div>
+            <div class="bean" data-index="5"></div>
           </div>
-          <p>Good</p>
+          <p class="rating-text">Give a rate!</p>
         </div>
         <div class="question2">
           <p>How was the ambience?</p>
           <div class="answer2">
-            <div>Good music</div>
-            <div>Good music</div>
-            <div>Good music</div>
-            <div>Good music</div>
-            <div>Good music</div>
+            <div class="atmo">Good music</div>
+            <div class="atmo">Nice to study</div>
+            <div class="atmo">Great ambience</div>
+            <div class="atmo">Nice view</div>
+            <div class="atmo">Good music</div>
           </div>
         </div>
       </section>
@@ -100,7 +80,8 @@
           id="text-input"
           placeholder="Share your experience with us"
         ></textarea>
-        <p>your review needs at least 80 characters</p>
+
+        <p id="char-count">you need at least 80 words</p>
       </div>
 
       <!-- photo -->
@@ -121,6 +102,19 @@
       </div>
     </div>
 
+    <section class="container review-wrap">
+      <div>
+        <h2>recent reviews</h2>
+        <div class="review-area">
+          <div>
+            <div>name</div>
+            <div>date</div>
+            <div>coffeebean</div>
+            <div>contents</div>
+          </div>
+        </div>
+      </div>
+    </section>
     <script src="app/review.js"></script>
   </body>
 </html>

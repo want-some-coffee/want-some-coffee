@@ -34,7 +34,30 @@ body{
 text-align: center;
 }
 .coffee-bean{
+    display: flex;
+    justify-content: center;
     margin: 0 2em 0.5em 2em;
+
+}
+
+.bean {
+    width: 30px;
+    height: 30px;
+    background-color: #B1B0B0;
+    mask: url('/css/icon/gray_coffee-bean-fill.svg') no-repeat center;
+    -webkit-mask: url('/css/icon/gray_coffee-bean-fill.svg') no-repeat center;
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    margin: 0 5px;
+    transition: background-color 0.3s;
+}
+
+.bean.filled {
+    background-color: #8C4416;
+    mask: url('/css/icon/brown_coffee-bean-fill.svg') no-repeat center;
+    -webkit-mask: url('/css/icon/brown_coffee-bean-fill.svg') no-repeat center;
+    mask-size: contain;
+    -webkit-mask-size: contain;
 }
 .question2{
     display: flex;
@@ -49,6 +72,18 @@ text-align: center;
 .answer2 >div{
     margin: 1em;
 }
+
+.atmo{
+    border: solid 1px #C1904E; ;
+    border-radius: 50px;
+    padding: 5px 10px ;
+    color: #C1904E;
+}
+.atmo:hover{
+    background-color: #8C4416;
+    color: white;
+}
+
 #text-input{
     width: 100%;
     height: 150px;
@@ -94,5 +129,16 @@ text-align: center;
     padding: 8px 1em;
     width: 200px;
     border-radius: 5px;
+}
+.cta-btn:hover{
+    background-color: #8c4316cd;
+}
 
+.review-wrap{
+    margin: 3em;
+    text-align: center;
+}
+.review-area{
+    display: flex;
+    justify-content: center;
 }
