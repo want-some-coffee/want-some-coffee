@@ -1,15 +1,15 @@
 export const yelpApiKey =
-  "cLCckwvPZ64EAo3l2oCqdkYwO92JumAudkV78b84mY_4StYXylEUG0u4R6exM-pnEv3OGRQK16VM_jvgBWBHTwR0jqrBEmhLOWNYTEuaSoodzEYYMAl2PW9ZWBSOZnYx";
+  'cLCckwvPZ64EAo3l2oCqdkYwO92JumAudkV78b84mY_4StYXylEUG0u4R6exM-pnEv3OGRQK16VM_jvgBWBHTwR0jqrBEmhLOWNYTEuaSoodzEYYMAl2PW9ZWBSOZnYx';
 
 export async function getYelpData(map) {
-  const location = "Toronto";
-  const category = "cafes";
+  const location = 'Toronto';
+  const category = 'cafes';
 
   const options = {
-    method: "GET",
+    method: 'GET',
     headers: {
       Authorization: `Bearer ${yelpApiKey}`,
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   };
 
@@ -26,7 +26,7 @@ export async function getYelpData(map) {
     const data = await response.json();
     displayResultsOnMap(data.businesses, map);
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error('Error fetching data:', error);
   }
 }
 
