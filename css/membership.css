@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+AU+VIC:wght@100..400&display=swap');
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* body {
+    background-color: #F9F9F4;
+    background-image: url(../images/backgroundimgcolor.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+} */
+
+.membership-box {
+    margin-top: 8px;
+    margin-bottom: 0;
+    background-image: url(../img/membership-backgroundimg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    font-family: "Poppins", sans-serif;
+    /* background: rgba(39, 39, 39, 0.4); */
+}
+
+.membership-form-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 512px;
+    height: 720px;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.login-container {
+    position: absolute;
+    right: 4px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    transition: .5s ease-in-out;
+}
+
+.register-container {
+    position: absolute;
+    /* right: -520px; */
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    transition: .5s ease-in-out;
+}
+
+.membership-top span {
+    color: #fff;
+    font-size: small;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.membership-top span a {
+    font-weight: 500;
+    color: #fff;
+    margin-left: 5px;
+}
+
+.membership-top h1 {
+    color: #fff;
+    font-size: 35px;
+    text-align: center;
+    padding: 10px 0 30px 0;
+    letter-spacing: 1.5px;
+}
+
+.register-two-forms {
+    display: flex;
+    gap: 10px;
+    flex-wrap: space-between;
+    width: 100%;
+}
+
+.membership-input-box {
+    width: 100%;
+}
+
+.membership-input-field {
+    font-size: 15px;
+    background-color: rgba(255,255,255,0.3);
+    color: #fff;
+    height: 50px;
+    width: 100%;
+    padding: 0 10px 0 45px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    transition: .2s ease;
+}
+
+.membership-input-field:hover, .membership-input-field:focus {
+    background: rgba(255,255,255,0.25);
+}
+
+::-webkit-input-placeholder {
+    color: #fff;
+}
+
+.membership-input-box i {
+    position: relative;
+    top: -35px;
+    left: 17px;
+    color: #fff;
+}
+
+/* Reset default styles */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: rgba(255, 255, 255, 0.2); /* Background color */
+    color: #fff; /* Text color */
+    padding: 10px; /* Padding */
+    border: none; /* Remove border */
+    border-radius: 30px; /* Rounded corners */
+    outline: none; /* Remove outline */
+    width: 100%; /* Full width */
+    font-size: 15px; /* Font size */
+    height: 50px; /* Height */
+  }
+  
+  /* Option styles */
+  option {
+    background-color: rgba(255, 255, 255, 0.2); /* Option background color */
+    color: #fff; /* Option text color */
+  }
+  
+  /* Placeholder color */
+  option[disabled]:first-child {
+    color: #999; /* Placeholder text color */
+  }
+
+.membership-submit {
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+    height: 45px;
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    /* background: rgba(255,255,255,0.7); */
+    background-color: #d7d1c6;
+    opacity: 0.7;
+    transition: .3s ease-in-out;
+}
+
+
+.membership-submit:hover {
+    box-shadow: 1px 5px 7px 1px rgba(0,0,0,0.2);background: rgba(255, 255, 255, 0,5);
+    background-color: #fff7e7;
+}
+
+.membership-two-col {
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    font-size: small;
+    margin-top: 10px;
+}
+
+.membership-two-col .membership-one {
+    display: flex;
+    gap: 5px;
+}
+
+.membership-two label a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.membership-two label a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    font-family: "Playwrite AU VIC", cursive;;
+}
+
+.footer-wrap {
+    position: relative;
+}
+
+
+
+@media only screen and (max-width: 540px) {
+    .membership-box {
+        min-height: 80vh;
+    }
+
+    .membership-form-box {
+        width: 100%;
+        height: 720px;
+    }
+
+    .register-container, .login-container {
+        width: 100%;
+        padding: 0 25px;
+    }
+
+    .membership-input-field {
+        font-size: 12px;
+    }
+
+    .profile-btn-container button {
+        margin-right: 5px;
+        width: 30px;
+        height: 15px;
+        border-radius: 30px;
+        background-color: #C1904E;
+        color: white;
+        font-size: 13px;
+    }
+
+}
+
+
+/* profile page */
+
+
+.profile-box {
+    height: 60vh;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-card {
+    border: none;
+    background-color: white;
+    padding: 20px;
+    width: 800px;
+    max-height: 400px;
+    border-radius: 10px;
+    border: 1px solid #9E5F37;
+}
+
+.profile-box-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-box-top h2 {
+    color: #9E5F37;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+
+.profile-btn-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile-btn-container button {
+    margin-right: 5px;
+    width: 100px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #C1904E;
+    color: white;
+}
+
+.profile-btn-container button:hover {
+    background-color: #9E5F37;
+    color: white;
+}
+
+
+.profile-card h5 {
+    text-align: center;
+    color: lightgray;
+    margin: 20px;
+    font-weight:normal;
+}
+
+.profile-card i {
+    color: #9E5F37;
+}
+
