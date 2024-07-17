@@ -29,11 +29,26 @@
     ></script>
     <link rel="stylesheet" href="css/review.css" />
   </head>
+
   <body>
+    <div class="cafe-wrapper">
+      <div>image</div>
+      <div class="business-info">
+        <h3>${cafe.name}</h3>
+        <p>${cafe.location.address1}</p>
+      </div>
+    </div>
+    <!-- before reviewing -->
     <div class="container">
-      <!-- review start -->
+      <div id="cafe-list"></div>
+      <label for="cafe-select">choose a cafe:</label>
+      <select id="cafe-select" required></select>
+    </div>
+
+    <!-- review start -->
+    <div class="container" id="review-form">
       <section>
-        <h3 class="head">Reviews</h3>
+        <h3 class="head">Write a review</h3>
         <div class="cafe-name-wrap">
           <div class="cafe-name">
             <h6>Cafe name</h6>

@@ -1,7 +1,7 @@
 // apikey
-export const yelpApiKey =
+const yelpApiKey =
   "cLCckwvPZ64EAo3l2oCqdkYwO92JumAudkV78b84mY_4StYXylEUG0u4R6exM-pnEv3OGRQK16VM_jvgBWBHTwR0jqrBEmhLOWNYTEuaSoodzEYYMAl2PW9ZWBSOZnYx";
-export const baseUrl = `https://api.yelp.com/v3/businesses/search?location=Toronto&categories=cafes&limit=10`;
+const baseUrl = `https://api.yelp.com/v3/businesses/search?location=Toronto&categories=cafes&limit=10`;
 
 const options = {
   method: "GET",
@@ -11,11 +11,11 @@ const options = {
   },
 };
 
-export let cafeList = [];
-export let totalResults = 0;
+let cafeList = [];
+let totalResults = 0;
 
 // Fetch Yelp data and display in café list area
-export const getCafes = async (url = baseUrl) => {
+const getCafes = async (url = baseUrl) => {
   try {
     const response = await fetch(url, options);
     console.log("response:", response);
@@ -37,11 +37,48 @@ export const getCafes = async (url = baseUrl) => {
   }
 };
 
-// ///practice
-// const getLatestReview = () => {
-//   const url = URL`https://api.yelp.com/v3/businesses/${businessId}/reviews`;
-// };
+// ///practice--------------------------------
 
+document.addEventListener("DOMContentLoaded", async () => {
+  const data = await getCafes();
+  if (data && data.businesses) {
+    drawCafeList(data.businesses);
+    populateCafeSelect(data.businesses);
+  }
+});
+
+// Populate café select dropdown
+const populateCafeSelect = (cafes) => {
+  const cafeSelect = document.getElementById("cafe-select");
+  cafes.forEach((cafe) => {
+    const option = document.createElement("option");
+    option.value = cafe.id;
+    option.textContent = cafe.name;
+    cafeSelect.appendChild(option);
+  });
+};
+
+// Display café list
+
+const drawCafeList = (cafes) => {
+  const cafeListDiv = document.getElementById("cafe-list");
+  cafeListDiv.innerHTML = "";
+  cafes.forEach((cafe) => {
+    const cafeDiv = document.createElement("div");
+    cafeDiv.className = "cafe";
+    cafeDiv.innerHTML = `
+    <div class="cafe-wrapper">
+    <div>image</div>
+    <div class="business-info">
+    <h3>${cafe.name}</h3>
+    <p>${cafe.location.address1}</p>
+    </div>
+    </div>`;
+    cafeListDiv.appendChild(cafeDiv);
+  });
+};
+
+///practice end ----------------------------
 ///list ///
 
 /// 1.call business name

@@ -63,6 +63,7 @@ text-align: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    text-align: center;
 }
 .filter-btn-area{
     display: flex;
@@ -148,4 +149,20 @@ text-align: center;
 .review-area{
     display: flex;
     justify-content: center;
+}
+
+/* javascrip css */
+.cafe-list{
+    display: flex;
+    height: 300px;
+    width: 250px;
+}
+.cafe-wrapper{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+
+}
+.business-info{
+
 }
