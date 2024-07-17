@@ -165,4 +165,15 @@ text-align: center;
 }
 .business-info{
 
+.cta-btn:hover{
+    background-color: #8c4316cd;
+}
+
+.review-wrap{
+    margin: 3em;
+    text-align: center;
+}
+.review-area{
+    display: flex;
+    justify-content: center;
 }
