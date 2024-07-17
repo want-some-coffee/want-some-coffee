@@ -223,13 +223,81 @@ select {
         font-size: 12px;
     }
 
+    .profile-btn-container button {
+        margin-right: 5px;
+        width: 30px;
+        height: 15px;
+        border-radius: 30px;
+        background-color: #C1904E;
+        color: white;
+        font-size: 13px;
+    }
+
 }
 
 
 /* profile page */
 
-.profile-container {
-    height: 80vh;
-    margin-top: 20px;
+
+.profile-box {
+    height: 60vh;
+    margin-top: 30px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.profile-card {
+    border: none;
+    background-color: white;
+    padding: 20px;
+    width: 800px;
+    max-height: 400px;
+    border-radius: 10px;
+    border: 1px solid #9E5F37;
+}
+
+.profile-box-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-box-top h2 {
+    color: #9E5F37;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+
+.profile-btn-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile-btn-container button {
+    margin-right: 5px;
+    width: 100px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #C1904E;
+    color: white;
+}
+
+.profile-btn-container button:hover {
+    background-color: #9E5F37;
+    color: white;
+}
+
+
+.profile-card h5 {
+    text-align: center;
+    color: lightgray;
+    margin: 20px;
+    font-weight:normal;
+}
+
+.profile-card i {
+    color: #9E5F37;
+}
+

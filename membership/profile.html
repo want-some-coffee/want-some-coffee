@@ -125,18 +125,32 @@
       </section>
 
         <!-- Profile page -->
-        <div class="container profile-container">
-            <div class="card">
-                <h2>Profile Page</h2>
-                <button onclick="logout()" style="float: right;">Logout</button>
+        <section class="profile-container">
+        <div class="container profile-box">
+            <div class="card profile-card">
+                <div class="profile-box-top">
+                    <h2>Profile</h2>
+                    <div class="profile-btn-container">
+                        <button onclick="logout()" style="float: right;" class="btn">Logout</button>
+                        <button onclick="edit()" style="float: right;" class="btn">Edit</button>
+                    </div>
+                </div>
                 <hr>
-                <h3>Welcome</h3>
-                <h4>Name: <span id="user_name"></span></h4>
-                <h6>Your Email is: 
+                <h5>Welcome to Want Some Coffee!</h5>
+                <p><i class='bx bxs-coffee-bean'></i> Name: <span id="user_fname"></span>&nbsp;<span id="user_lname"></span></p>
+                <p><i class='bx bxs-coffee-bean'></i> Address: 
+                    <span id="user_address"></span>&nbsp;<span id="user_pcode"></span>&nbsp;<span id="user_country"></span>
+                </p>
+                <p><i class='bx bxs-coffee-bean'></i> Email: 
                     <span id="user_email"></span>
-                </h6>
+                </p>
+                <p><i class='bx bxs-coffee-bean'></i> Favorite Cafe: 
+                    <span id="user_favcafe"></span>
+                </p>
             </div>
         </div>
+        </section>
+
     <!-- footer -->
     <div class="footer-wrap align-items-end">
         <div class="container">

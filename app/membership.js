@@ -273,9 +273,6 @@ function register() {
     let email = document.getElementById('register-email').value;
     let password = document.getElementById('register-password').value;
     let favoriteCafe = document.getElementById('register-favcafe').value;
-    // localStorage.setItem('name', name);
-    // localStorage.setItem('email', email);
-    // localStorage.setItem('password', password);
 
     let user_records = [];
     user_records = JSON.parse(localStorage.getItem('users'))?JSON.parse(localStorage.getItem('users')):[];
@@ -312,6 +309,9 @@ function clearForm() {
 }
 
 
+let loggedInUser;
+
+
 function login() {
     let email = document.getElementById('login-email').value;
     let password = document.getElementById('login-password').value;
@@ -320,11 +320,16 @@ function login() {
 
     if (user_records.some((v) => v.email === email && v.password === password)) {
         alert('Login Successful');
-        let current_user = user_records.find((v) => v.email === email && v.password === password);
+        let currentUser = user_records.find((v) => v.email === email && v.password === password);
 
         // Store user information in localStorage
-        localStorage.setItem('name', current_user.name);
-        localStorage.setItem('email', current_user.email);
+        localStorage.setItem('fname', currentUser.fname);
+        localStorage.setItem('lname', currentUser.lname);
+        localStorage.setItem('address', currentUser.address);
+        localStorage.setItem('country', currentUser.country);
+        localStorage.setItem('pcode', currentUser.pcode);
+        localStorage.setItem('email', currentUser.email);
+        localStorage.setItem('cafe', currentUser.cafe);
 
         // Redirect to profile.html
         window.location.href = 'profile.html';
@@ -332,4 +337,28 @@ function login() {
     } else {
         alert('Login Failed. Please check your credentials.');
     }
+}
+
+/* profile page */
+
+
+document.getElementById('user_fname').innerText = localStorage.getItem('fname');
+document.getElementById('user_lname').innerText = localStorage.getItem('lname');
+document.getElementById('user_address').innerText = localStorage.getItem('address');
+document.getElementById('user_country').innerText = localStorage.getItem('country');
+document.getElementById('user_pcode').innerText = localStorage.getItem('pcode');
+document.getElementById('user_email').innerText = localStorage.getItem('email');
+document.getElementById('user_favcafe').innerText = localStorage.getItem('cafe');
+
+
+
+function logout() {
+   localStorage.removeItem('fname');
+   localStorage.removeItem('lname');
+   localStorage.removeItem('address');
+   localStorage.removeItem('country');
+   localStorage.removeItem('pcode');
+   localStorage.removeItem('email');
+   localStorage.removeItem('cafe');
+   window.location.href='login.html';
 }
