@@ -267,21 +267,48 @@ document.addEventListener('DOMContentLoaded', (event) => {
 function register() {
     let firstName = document.getElementById('register-first-name').value;
     let lastName = document.getElementById('register-last-name').value;
+    let address = document.getElementById('register-address').value;
+    let country = document.getElementById('register-country').value;
+    let postalCode = document.getElementById('register-postalcode').value;
     let email = document.getElementById('register-email').value;
     let password = document.getElementById('register-password').value;
+    let favoriteCafe = document.getElementById('register-favcafe').value;
     // localStorage.setItem('name', name);
     // localStorage.setItem('email', email);
     // localStorage.setItem('password', password);
 
     let user_records = [];
     user_records = JSON.parse(localStorage.getItem('users'))?JSON.parse(localStorage.getItem('users')):[];
-    if(user_records.some((v)=> v.email == email)) {
-        alert('Duplicate data')
-    } else {
-        user_records.push({ 'fname':firstName, 'lname':lastName, 'email':email, 'password':password});
+
+    if (!firstName || !lastName || !address || !country || !postalCode || !email || !password) {
+        alert('Please fill all the required fields');
+        return; 
     }
+
+    if (user_records.some(v => v.email === email)) {
+        alert('Email already registered');
+        return; 
+    }
+
+
+    user_records.push({ 'fname':firstName, 'lname':lastName, 'address':address, 'country':country, 'pcode':postalCode, 'email':email, 'password':password, 'cafe':favoriteCafe});
+
     localStorage.setItem('users', JSON.stringify(user_records));
 
+    alert('Registration successful!');
+
+    clearForm();
+}
+
+function clearForm() {
+    document.getElementById('register-first-name').value = '';
+    document.getElementById('register-last-name').value = '';
+    document.getElementById('register-address').value = '';
+    document.getElementById('register-country').value = '';
+    document.getElementById('register-postalcode').value = '';
+    document.getElementById('register-email').value = '';
+    document.getElementById('register-password').value = '';
+    document.getElementById('register-favcafe').value = '';
 }
 
 
@@ -300,7 +327,8 @@ function login() {
         localStorage.setItem('email', current_user.email);
 
         // Redirect to profile.html
-        window.location.href = '../index.html';
+        window.location.href = 'profile.html';
+        
     } else {
         alert('Login Failed. Please check your credentials.');
     }

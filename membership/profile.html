@@ -124,91 +124,19 @@
         </div>
       </section>
 
-    <!--------- Form Box ------------>
-    <section class="membership-box">
-      <div class="membership-form-box register-box">
-
-        <!--registration form-->
-        <div class="register-container" id="register">
-          <div class="membership-top">
-            <span
-              >Have an account? <a href="login.html">Login</a></span
-            >
-            <h1>Sign Up</h1>
-          </div>
-          <div class="register-two-forms">
-            <div class="membership-input-box">
-              <input
-                type="text"
-                class="membership-input-field"
-                placeholder="First name*" id="register-first-name" required
-              /><i class="bx bx-user"></i>
+        <!-- Profile page -->
+        <div class="container profile-container">
+            <div class="card">
+                <h2>Profile Page</h2>
+                <button onclick="logout()" style="float: right;">Logout</button>
+                <hr>
+                <h3>Welcome</h3>
+                <h4>Name: <span id="user_name"></span></h4>
+                <h6>Your Email is: 
+                    <span id="user_email"></span>
+                </h6>
             </div>
-            <div class="membership-input-box">
-              <input
-                type="text"
-                class="membership-input-field"
-                placeholder="Last name*" id="register-last-name" required
-              /><i class="bx bx-user"></i>
-            </div>
-          </div>
-          <div class="membership-input-box">
-            <input
-              type="text"
-              class="membership-input-field"
-              placeholder="Address*" id="register-address" required
-            /><i class="bx bxs-map"></i>
-          </div>
-          <div class="register-two-forms">
-          <div class="membership-input-box">
-            <select id="register-country" name="country" class="membership-input-field" required>
-                <option value="">Select Country*</option>
-            </select><i class="bx bx-map-alt"></i>
-          </div>
-          <div class="membership-input-box">
-            <input
-              type="text"
-              class="membership-input-field"
-              placeholder="Postal Code" id="register-postalcode" required
-            /><i class="bx bxs-map"></i>
-          </div>
         </div>
-          <div class="membership-input-box">
-            <input
-              type="email"
-              class="membership-input-field"
-              placeholder="Email*" id="register-email" required
-            /><i class="bx bx-envelope"></i>
-          </div>
-          <div class="membership-input-box">
-            <input
-              type="password"
-              class="membership-input-field"
-              placeholder="Password*" id="register-password" required
-            /><i class="bx bx-lock-alt"></i>
-          </div>
-          <div class="membership-input-box">
-            <input
-              type="text"
-              class="membership-input-field"
-              placeholder="What's your favorite cafe? (optional)" id="register-favcafe"/><i class="bx bx-coffee"></i>
-          </div>
-          <div class="membership-input-box">
-            <input type="submit" class="membership-submit" value="Register" onclick="register()"/>
-          </div>
-          <div class="membership-two-col">
-            <div class="membership-one">
-              <input type="checkbox" id="register-check" />
-              <label for="register-check">Remember Me</label>
-            </div>
-            <div class="membership-two">
-              <label><a href="#">Terms & conditions</a></label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- footer -->
     <div class="footer-wrap align-items-end">
         <div class="container">
