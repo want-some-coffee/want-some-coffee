@@ -15,6 +15,7 @@
             height: 700px;
             width: 500px;
             position: absolute;
+            top: 13%;
             right: 0;
         }
 
@@ -27,20 +28,46 @@
             overflow-y: auto;
         }
 
+        #search-btn {
+            width: 250px;
+            position: absolute;
+            top: 15%;
+            left: 86%;
+            transform: translateX(-50%);
+            background-color: rgb(174, 144, 118);
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            cursor: pointer;
+            z-index: 1000;
+            text-align: center;
+        }
+
         .input-group {
             width: 300px;
-            position: relative;
+            position: absolute;
+            right: 40%;
+            top: 10%;
             margin: 10px;
             z-index: 10;
+        }
+
+        .star {
+            width: 30px;
+            height: 30px;
+            margin-right: 2px;
         }
     </style>
 </head>
 
 <body>
+    <div id="search-btn" onclick="searchCafes()">Search Here</div>
+
     <div class="input-group mb-3">
-        <input type="text" class="form-control" id="location" placeholder="Enter a location">
+        <input type="text" class="form-control" id="location" placeholder="Enter location">
         <div class="input-group-append">
-            <button class="btn btn-primary" type="button" onclick="searchCafes()">Search Cafes</button>
+            <button class="btn btn-primary" type="button" onclick="geocodeLocation()">Go</button>
+            <!-- @@ 검색 버튼 텍스트 변경 -->
         </div>
     </div>
     <div>

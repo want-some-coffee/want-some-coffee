@@ -7,8 +7,8 @@ function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: 51.0447, lng: -114.0719 },
     zoom: 15,
-    mapTypeControl: false, // 지도 위성 버튼 숨기기 ***
-    streetViewControl: false, // 노란색 사람 모양 숨기기 ***
+    mapTypeControl: false, // 지도 위성 버튼 숨기기 
+    streetViewControl: false, // 노란색 사람 모양 숨기기 
   });
 
   // 사용자의 현재 위치를 가져와 지도 중심으로 설정
@@ -26,16 +26,6 @@ function initMap() {
       });
     });
   }
-
-  //지도 클릭 이벤트 추가
-  map.addListener("click", (event) => {
-    const clickedLocation = {
-        lat : event.latLng.lat(),
-        lng : event.latLng.lng(),
-    };
-    searchCafes(clickedLocation);
-    console.log(clickedLocation);
-});
 }
 
 const yelpAPI = 'kIrjDqF68bBxQuQ2oASKMilcGPTcgR9uOdCOKHXVxbCSg96wj-EPsShqiv_igpVi2V90fJtvu-0hQDPyzXHl7cemU1E62wz7Jo5x0C1XfzPogjXJL54-PepA2H-ZZnYx'
@@ -49,36 +39,54 @@ async function fetchCafes(latitude, longitude) {
       'Authorization': `Bearer ${yelpAPI}`, 
     },
   });
-  const data = await response.json();
-  return data.businesses;
+  // const data = await response.json();
+  // return data.businesses;
+  if (response.ok) {
+    const data = await response.json();
+    console.log(data); 
+    return data.businesses;
+  } else {
+    console.error('Error fetching data from Yelp API', response);
+    return [];
+  }
 }
 
-// 리뷰 아이콘을 생성하는 함수 ***
+// 리뷰 아이콘을 생성하는 함수 
 function generateBeans(rating) {
     const fullStarUrl = 'css/icon/brown_coffee-bean-fill.svg'; 
+    const halfStarUrl = 'https://cdn.iconscout.com/icon/premium/png-256-thumb/half-star-6-1180349.png?f=webp'; 
     const emptyStarUrl = 'css/icon/brown_coffee-bean-fill.svg'; 
     
     const fullStar = `<img src="${fullStarUrl}" class="star" alt="Full Star" />`; 
+    const halfStar = `<img src="${halfStarUrl}" class="star" alt="Half Star" />`; 
     const emptyStar = `<img src="${emptyStarUrl}" class="star" alt="Empty Star" />`;  
     
     let stars = '';
+    let roundedRating = Math.round(rating * 2) / 2; 
     
-    for (let i = 0; i < 5; i++) {
-      stars += i < rating ? fullStar : emptyStar;
+    for (let i = 1; i <= 5; i++) {
+      if (roundedRating >= i) {
+          stars += fullStar;
+      } else if (roundedRating + 0.5 >= i) {
+          stars += halfStar;
+      } else {
+          stars += emptyStar;
+      }
     }
     return stars;
   }
 
-// 카페 리스트를 정렬하거나 필터링하는 함수
 const filterByRating = (minRating) => {
   const filteredCafeList = cafeList.filter(cafe => cafe.rating >= minRating);
   drawCafeList(filteredCafeList);
 }
 
+
 const filterByOpenStatus = () => {
-  const filteredCafeList = cafeList.filter(cafe => cafe.hours && cafe.hours[0].is_open_now);
+  const filteredCafeList = cafeList.filter(cafe => cafe.business_hours && cafe.business_hours[0] && cafe.business_hours[0].is_open_now); 
   drawCafeList(filteredCafeList);
 }
+
 
 const drawCafeList = (cafeList) => { 
   console.log('Drawing café list:', cafeList);
@@ -105,16 +113,15 @@ const drawCafeList = (cafeList) => {
   }
 // 사용자가 입력한 위치를 기준으로 카페를 검색하는 함수
 async function searchCafes(location) {
-    const latitude = location ? location.lat : 51.0447; // 기본 위치는 캘거리
-    const longitude = location ? location.lng : -114.0719; // 기본 위치는 캘거리
+  const latitude = location ? location.lat : map.getCenter().lat(); 
+  const longitude = location ? location.lng : map.getCenter().lng();
     const cafes = await fetchCafes(latitude, longitude);
   
-    // 기존 마커와 결과 삭제
     map.markers && map.markers.forEach(marker => marker.setMap(null));
     map.markers = [];
   
     const cafesContainer = document.getElementById('cafes');
-    cafesContainer.innerHTML = ''; // 이전 결과를 초기화
+    cafesContainer.innerHTML = ''; 
   
     // const customIcon =  "css/icon/brown_coffee-bean-fill.svg"
     cafes.forEach((cafe) => {
@@ -126,7 +133,7 @@ async function searchCafes(location) {
       });
 
 
-      // InfoWindow 생성 *** 
+      // InfoWindow 생성 
     const infoWindow = new google.maps.InfoWindow({
         content: `<div style="width: 250px; height: 200px;"> <!-- InfoWindow 크기 조정 *** -->
                     <h5 style="text-align: center;">${cafe.name}</h5>
@@ -136,19 +143,17 @@ async function searchCafes(location) {
         disableAutoPan: false
       });
   
-      // 마우스오버 이벤트 추가 
       marker.addListener('mouseover', () => {
         infoWindow.open(map, marker);
       });
   
-      // 마우스아웃 이벤트 추가 
       marker.addListener('mouseout', () => {
         infoWindow.close();
       });
-    // 마커를 배열에 추가
+
     map.markers.push(marker);
 
-    // 카페 정보를 보여주는 요소 생성
+    // 카페 정보를 보여줌
     const cafeElement = document.createElement('div');
     cafeElement.classList.add('col-md-4', 'mb-3');
     cafeElement.innerHTML = `
@@ -163,29 +168,27 @@ async function searchCafes(location) {
     cafesContainer.appendChild(cafeElement);
 
     });
-    cafeList = cafes; // 카페 리스트 업데이트 
-    drawCafeList(cafeList); // 초기 리스트 표시 
+    cafeList = cafes; 
+    drawCafeList(cafeList); 
   }
 
-// 위치 입력란에서 Enter 키를 누르면 검색 수행
-document.getElementById('location').addEventListener('keyup', (event) => {
-    if (event.key === 'Enter') {
-      const location = document.getElementById('location').value;
-      const geocoder = new google.maps.Geocoder();
-  
-      geocoder.geocode({ address: location }, (results, status) => {
-        if (status === 'OK') {
-          map.setCenter(results[0].geometry.location);
-          searchCafes({
-            lat: results[0].geometry.location.lat(),
-            lng: results[0].geometry.location.lng(),
-          });
-        } else {
-          alert('Geocode was not successful for the following reason: ' + status);
-        }
+// 입력된 위치를 기반으로 >> 지도 중심을 이동
+function geocodeLocation() {
+  const location = document.getElementById('location').value;
+  const geocoder = new google.maps.Geocoder();
+
+  geocoder.geocode({ address: location }, (results, status) => {
+    if (status === 'OK') {
+      map.setCenter(results[0].geometry.location);
+      searchCafes({
+        lat: results[0].geometry.location.lat(),
+        lng: results[0].geometry.location.lng(),
       });
+    } else {
+      alert('error' + status);
     }
   });
+}
 
   document.getElementById('filter-rating-4').addEventListener('click', () => filterByRating(4)); 
   document.getElementById('filter-rating-3').addEventListener('click', () => filterByRating(3)); 
