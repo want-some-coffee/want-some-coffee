@@ -29,11 +29,20 @@
     ></script>
     <link rel="stylesheet" href="css/review.css" />
   </head>
+
   <body>
+
+    <!-- before reviewing -->
     <div class="container">
-      <!-- review start -->
+      <div id="cafe-list"></div>
+      <label for="cafe-select">choose a cafe:</label>
+      <select id="cafe-select" required></select>
+    </div>
+
+    <!-- review start -->
+    <div class="container" id="review-form">
       <section>
-        <h3 class="head">Reviews</h3>
+        <h3 class="head">Write a review</h3>
         <div class="cafe-name-wrap">
           <div class="cafe-name">
             <h6>Cafe name</h6>
@@ -41,7 +50,7 @@
           </div>
           <div class="cafe-score">
             <img
-              src="css/icon/brwon_coffee-bean-fill.svg"
+              src="css/icon/brown_coffee-bean-fill.svg"
               width="24px"
               height="24px"
             />
@@ -55,42 +64,22 @@
         <div class="coffee-bean-wrap">
           <p>How was your coffee?</p>
           <div class="coffee-bean">
-            <img
-              src="css/icon/brwon_coffee-bean-fill.svg"
-              width="30px"
-              height="30px"
-            />
-            <img
-              src="css/icon/gray_coffee-bean-fill.svg"
-              width="30px"
-              height="30px"
-            />
-            <img
-              src="css/icon/gray_coffee-bean-fill.svg"
-              width="30px"
-              height="30px"
-            />
-            <img
-              src="css/icon/gray_coffee-bean-fill.svg"
-              width="30px"
-              height="30px"
-            />
-            <img
-              src="css/icon/gray_coffee-bean-fill.svg"
-              width="30px"
-              height="30px"
-            />
+            <div class="bean" data-index="1"></div>
+            <div class="bean" data-index="2"></div>
+            <div class="bean" data-index="3"></div>
+            <div class="bean" data-index="4"></div>
+            <div class="bean" data-index="5"></div>
           </div>
-          <p>Good</p>
+          <p class="rating-text">Give a rate!</p>
         </div>
         <div class="question2">
           <p>How was the ambience?</p>
-          <div class="answer2">
-            <div>Good music</div>
-            <div>Good music</div>
-            <div>Good music</div>
-            <div>Good music</div>
-            <div>Good music</div>
+          <div class="filter-btn-area">
+            <button class="filter-btn">Good music</button>
+            <button class="filter-btn">Nice to study</button>
+            <button class="filter-btn">Great ambience</button>
+            <button class="filter-btn">Nice view</button>
+            <button class="filter-btn">Good music</button>
           </div>
         </div>
       </section>
@@ -100,7 +89,8 @@
           id="text-input"
           placeholder="Share your experience with us"
         ></textarea>
-        <p>your review needs at least 80 characters</p>
+
+        <p id="char-count">you need at least 80 words</p>
       </div>
 
       <!-- photo -->
@@ -115,12 +105,42 @@
         </div>
       </div>
 
+
+      <!-- modal -->
+  <div id="photoModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Upload Photo</h2>
+       <div id="dropArea" class="drop-area">
+        <p>Drag & Drop your file here or click to select a file</p>
+      <input type="file" id="photoInput" hidden multiple>
+      <div id="previewArea" class="preview-area"></div>
+    </div>
+    <button id="uploadPhotoButton">Upload</button>
+  </div>
+  </div>
+
+
+
       <!-- CTA Button -->
       <div class="cta-btn-area">
         <button class="cta-btn">Post</button>
       </div>
     </div>
 
+    <section class="container review-board">
+      <div>
+        <h2>recent reviews</h2>
+        <div class="review-area">
+          <div>
+            <div>name</div>
+            <div>date</div>
+            <div>coffeebean</div>
+            <div>contents</div>
+          </div>
+        </div>
+      </div>
+    </section>
     <script src="app/review.js"></script>
   </body>
 </html>

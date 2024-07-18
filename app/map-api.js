@@ -52,12 +52,12 @@ async function fetchCafes(latitude, longitude) {
 }
 
 // 리뷰 아이콘을 생성하는 함수 ***
-function generateStars(rating) {
-    const fullStarUrl = 'css/icon/brwon_coffee-bean-fill.svg'; 
-    const emptyStarUrl = 'css/icon/brwon_coffee-bean-fill.svg'; 
+function generateBeans(rating) {
+    const fullStarUrl = 'css/icon/brown_coffee-bean-fill.svg'; 
+    const emptyStarUrl = 'css/icon/brown_coffee-bean-fill.svg'; 
     
-    const fullStar = `<img src="${fullStarUrl}" class="star" alt="Full Star" />`; // 이미지 태그로 수정 ***
-    const emptyStar = `<img src="${emptyStarUrl}" class="star" alt="Empty Star" />`; // 이미지 태그로 수정 ***
+    const fullStar = `<img src="${fullStarUrl}" class="star" alt="Full Star" />`; 
+    const emptyStar = `<img src="${emptyStarUrl}" class="star" alt="Empty Star" />`;  
     
     let stars = '';
     
@@ -67,6 +67,40 @@ function generateStars(rating) {
     return stars;
   }
 
+// 카페 리스트를 정렬하거나 필터링하는 함수
+const filterByRating = (minRating) => {
+  const filteredCafeList = cafeList.filter(cafe => cafe.rating >= minRating);
+  drawCafeList(filteredCafeList);
+}
+
+const filterByOpenStatus = () => {
+  const filteredCafeList = cafeList.filter(cafe => cafe.hours && cafe.hours[0].is_open_now);
+  drawCafeList(filteredCafeList);
+}
+
+const drawCafeList = (cafeList) => { 
+  console.log('Drawing café list:', cafeList);
+  const cafeHTML = cafeList
+    .map((cafe) => {
+      return `
+      <div class="row">
+        <div class="col-lg-4 col-md-5 cafe-list"><img src="${cafe.image_url}" class="d-block w-100"></div>
+        <div class="col-lg-8 col-md-7">
+            <div class="data-title"><a href="${cafe.url}">${cafe.name}</a></div>
+            <div class="data-txt">${cafe.rating} ${cafe.review_count} reviews</div>
+            <div class="data-txt"><span class="ribbon-highlight">${cafe.categories.map((cat) => cat.title).join(', ')}</span>, ${cafe.location.city}</div>
+            <div class="data-txt">${cafe.hours && cafe.hours[0].is_open_now ? 'Open' : 'Closed'}</div>
+            <div class="data-txt">“${cafe.snippet_text || 'No description available.'}” more</div>
+            <div class="data-txt">${cafe.location.address1}, ${cafe.location.city}</div>
+        </div>
+    </div>
+        <hr>
+      `;
+    })
+    .join('');
+
+  document.getElementById('cafes').innerHTML = cafeHTML; 
+  }
 // 사용자가 입력한 위치를 기준으로 카페를 검색하는 함수
 async function searchCafes(location) {
     const latitude = location ? location.lat : 51.0447; // 기본 위치는 캘거리
@@ -80,7 +114,7 @@ async function searchCafes(location) {
     const cafesContainer = document.getElementById('cafes');
     cafesContainer.innerHTML = ''; // 이전 결과를 초기화
   
-    // const customIcon =  "css/icon/brwon_coffee-bean-fill.svg"
+    // const customIcon =  "css/icon/brown_coffee-bean-fill.svg"
     cafes.forEach((cafe) => {
       const marker = new google.maps.Marker({
         position: { lat: cafe.coordinates.latitude, lng: cafe.coordinates.longitude },
@@ -95,9 +129,9 @@ async function searchCafes(location) {
         content: `<div style="width: 250px; height: 200px;"> <!-- InfoWindow 크기 조정 *** -->
                     <h5 style="text-align: center;">${cafe.name}</h5>
                     <img src="${cafe.image_url}" alt="${cafe.name}" style="width: 100%; height: 120px; object-fit: cover;"> 
-                    <div style="text-align: center; margin-top: 10px;">${generateStars(cafe.rating)}</div> 
+                    <div style="text-align: center; margin-top: 10px;">${generateBeans(cafe.rating)}</div> 
                   </div>`,
-        disableAutoPan: true
+        disableAutoPan: false
       });
   
       // 마우스오버 이벤트 추가 
@@ -127,7 +161,10 @@ async function searchCafes(location) {
     cafesContainer.appendChild(cafeElement);
 
     });
+    cafeList = cafes; // 카페 리스트 업데이트 
+    drawCafeList(cafeList); // 초기 리스트 표시 
   }
+
 // 위치 입력란에서 Enter 키를 누르면 검색 수행
 document.getElementById('location').addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
@@ -148,5 +185,7 @@ document.getElementById('location').addEventListener('keyup', (event) => {
     }
   });
 
-
+  document.getElementById('filter-rating-4').addEventListener('click', () => filterByRating(4)); 
+  document.getElementById('filter-rating-3').addEventListener('click', () => filterByRating(3)); 
+  document.getElementById('filter-open').addEventListener('click', filterByOpenStatus);
   
