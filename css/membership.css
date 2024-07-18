@@ -98,7 +98,7 @@
 
 .membership-input-field {
     font-size: 15px;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255, 255, 255, 0.3);
     color: #fff;
     height: 50px;
     width: 100%;
@@ -109,8 +109,9 @@
     transition: .2s ease;
 }
 
-.membership-input-field:hover, .membership-input-field:focus {
-    background: rgba(255,255,255,0.25);
+.membership-input-field:hover,
+.membership-input-field:focus {
+    background: rgba(255, 255, 255, 0.25);
 }
 
 ::-webkit-input-placeholder {
@@ -129,27 +130,39 @@ select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: rgba(255, 255, 255, 0.2); /* Background color */
-    color: #fff; /* Text color */
-    padding: 10px; /* Padding */
-    border: none; /* Remove border */
-    border-radius: 30px; /* Rounded corners */
-    outline: none; /* Remove outline */
-    width: 100%; /* Full width */
-    font-size: 15px; /* Font size */
-    height: 50px; /* Height */
-  }
-  
-  /* Option styles */
-  option {
-    background-color: rgba(255, 255, 255, 0.2); /* Option background color */
-    color: #fff; /* Option text color */
-  }
-  
-  /* Placeholder color */
-  option[disabled]:first-child {
-    color: #999; /* Placeholder text color */
-  }
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Background color */
+    color: #fff;
+    /* Text color */
+    padding: 10px;
+    /* Padding */
+    border: none;
+    /* Remove border */
+    border-radius: 30px;
+    /* Rounded corners */
+    outline: none;
+    /* Remove outline */
+    width: 100%;
+    /* Full width */
+    font-size: 15px;
+    /* Font size */
+    height: 50px;
+    /* Height */
+}
+
+/* Option styles */
+option {
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Option background color */
+    color: #fff;
+    /* Option text color */
+}
+
+/* Placeholder color */
+option[disabled]:first-child {
+    color: #999;
+    /* Placeholder text color */
+}
 
 .membership-submit {
     font-size: 15px;
@@ -168,7 +181,8 @@ select {
 
 
 .membership-submit:hover {
-    box-shadow: 1px 5px 7px 1px rgba(0,0,0,0.2);background: rgba(255, 255, 255, 0,5);
+    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0, 5);
     background-color: #fff7e7;
 }
 
@@ -194,9 +208,9 @@ select {
     text-decoration: underline;
 }
 
-.logo {
+/* .logo {
     font-family: "Playwrite AU VIC", cursive;;
-}
+} */
 
 .footer-wrap {
     position: relative;
@@ -214,7 +228,8 @@ select {
         height: 720px;
     }
 
-    .register-container, .login-container {
+    .register-container,
+    .login-container {
         width: 100%;
         padding: 0 25px;
     }
@@ -230,6 +245,10 @@ select {
         border-radius: 30px;
         background-color: #C1904E;
         color: white;
+        font-size: 13px;
+    }
+
+    .profile-pwchange-btn {
         font-size: 13px;
     }
 
@@ -289,15 +308,62 @@ select {
     color: white;
 }
 
+.profile-pwchange-btn {
+    margin-right: 5px;
+    width: 170px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: red;
+    color: white;
+    margin: 10px;
+}
+
+.change-btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-pwchange-btn:hover {
+    background-color: rgb(255, 83, 83);
+    color: white;
+}
+
+/* .edit-save-btn {
+    margin-right: 5px;
+    width: 100px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #C1904E;
+    color: white;
+    border: none;
+} */
 
 .profile-card h5 {
     text-align: center;
     color: lightgray;
     margin: 20px;
-    font-weight:normal;
+    font-weight: normal;
 }
 
 .profile-card i {
     color: #9E5F37;
 }
 
+
+.profile-custom-modal .modal-content {
+    background-color: #F9F9F4;
+    border-radius: 10px;
+    border: 1px solid #9E5F37;
+}
+
+.profile-custom-modal button {
+    background-color: #C1904E;
+    color: white;
+    border-radius: 30px;
+    border: none;
+}
+
+.profile-custom-modal button:hover {
+    background-color: #9E5F37;
+    color: white;
+}
