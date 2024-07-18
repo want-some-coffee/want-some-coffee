@@ -147,3 +147,6 @@ document.getElementById('location').addEventListener('keyup', (event) => {
       });
     }
   });
+
+
+  
