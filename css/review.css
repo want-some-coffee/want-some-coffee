@@ -6,6 +6,7 @@ body{
     text-align: center;
     margin: 1em;
 }
+/* cafe name */
 .cafe-name-wrap{
     display: flex;
     flex-direction: row;
@@ -20,6 +21,8 @@ body{
     font-size: 14px;
     color: #C1904E;
 }
+
+/* rate area */
 .cafe-score{
     display: flex;
     gap: 7px;
@@ -59,6 +62,8 @@ text-align: center;
     mask-size: contain;
     -webkit-mask-size: contain;
 }
+
+/* ambience */
 .question2{
     display: flex;
     justify-content: center;
@@ -90,6 +95,20 @@ text-align: center;
     background-color: #8C4416;
     color: #fff;
 }
+.filters-container {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.filter-ambience{
+    background-color: #8C4416;
+    border-radius: 50px;
+    padding: 3px 6px;
+    color: #ffffff;
+    margin: 3px;
+    font-size: 10px;
+}
+
 #text-input{
     width: 100%;
     height: 150px;
@@ -105,6 +124,8 @@ text-align: center;
 .text-area>p{
     color: #606060;
 }
+
+/* add photo */
 .photo-add{
     border: solid 1px #C1904E;
     color: #C1904E;
@@ -203,6 +224,8 @@ text-align: center;
     margin-top: 20px;
 }
 
+
+/* post */
 .cta-btn-area{
     margin-top: 2em;
     display: flex;
@@ -229,6 +252,43 @@ text-align: center;
     display: flex;
     justify-content: center;
 }
+/* review area */
+.review-board {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+}
+
+.profile-wrap {
+    display: flex;
+    align-items: flex-start;
+    border: solid 1px #c18f4e48;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #c18f4e17;
+
+}
+
+.review-profile {
+    flex-shrink: 0;
+    width: 55px;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.profile-content {
+    flex-grow: 1;
+}
+
+.bean-date-wrap {
+    display: flex;
+    justify-content: left;
+    gap: 15px;
+}
+
+.bean-rate img {
+    margin-right: 2px;
+}
 
 /* javascrip css */
 
@@ -246,8 +306,7 @@ text-align: center;
     display: flex;
 
 }
-.business-info{
-}
+
 .cta-btn:hover{
     background-color: #8c4316cd;
 }
@@ -281,6 +340,18 @@ text-align: center;
     justify-content: center;
     font-size: 16px;
 }
+.board-image {
+    width: 150px;
+    height: 150px;
+    max-width: 100%;
+}
+
+.review-area{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
 @media (min-width: 680px){
     .modal-content{
         width: 680px;
@@ -296,4 +367,5 @@ text-align: center;
         left: 3%;
 
     }
-}
+
+    }
