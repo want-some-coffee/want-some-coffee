@@ -38,7 +38,9 @@ function initMap() {
 });
 }
 
-const yelpAPI = 'P8yrZJ5yne3K8xtnN9mu5kPWG39xDyF8LiR7W8IFcgvHpeVyuimRuUHwsAUa_gslcPCTNP3UPYU_GjeEkP22hvjCO3LvMpthn7IEFP0ooQ2yeOgkszVS9YbszuuXZnYx'
+const yelpAPI = 'kIrjDqF68bBxQuQ2oASKMilcGPTcgR9uOdCOKHXVxbCSg96wj-EPsShqiv_igpVi2V90fJtvu-0hQDPyzXHl7cemU1E62wz7Jo5x0C1XfzPogjXJL54-PepA2H-ZZnYx'
+
+// 은미님 api 'P8yrZJ5yne3K8xtnN9mu5kPWG39xDyF8LiR7W8IFcgvHpeVyuimRuUHwsAUa_gslcPCTNP3UPYU_GjeEkP22hvjCO3LvMpthn7IEFP0ooQ2yeOgkszVS9YbszuuXZnYx'
 
 // Yelp API를 사용하여 특정 위치 주변의 카페 정보를 가져오는 함수
 async function fetchCafes(latitude, longitude) {
