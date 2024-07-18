@@ -115,15 +115,94 @@ text-align: center;
 .photo-add:hover{
     background-color: #8c431629;
 }
-.photo-area{
-    display: flex;
+
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: #0000002c;
 }
-.photo{
-    margin: 1em;
+.modal-content{
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #b7b7b7;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+#photoInput{
+    font-size: 14px;
+    color: #C1904E;
+}
+#uploadPhotoButton{
+    margin-top: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #8C4416;
+    color: white;
+    padding: 8px 
+}
+#uploadPhotoButton:hover{
+    background-color: #8c4316ca;
+}
+
+.drop-area {
+    margin-top: 1em;
+    border: 1px dashed #C1904E;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #c18f4e17;
+    border-radius: 5px;
+    height: 60%;
+}
+.drop-area>p{
+    color: #8C4416;
+}
+.drop-area.dragover{
+    border-color: #333;
+    background-color: #f0f0f0;
+}
+.photo-area, .preview-area{
+    display: flex;
+    flex-direction: row;
+    
+}
+.photo-area img, .preview-area img{
+    max-width: 100px;
+    max-height: 100px;
     width: 100px;
     height: 100px;
-    background-color: lightblue;
+    display: block;
+    margin: 5px;
 }
+
+#photoInput{
+    margin-bottom: 1em;
+}
+.photo-area{
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
 .cta-btn-area{
     margin-top: 2em;
     display: flex;
@@ -152,19 +231,23 @@ text-align: center;
 }
 
 /* javascrip css */
+
 .cafe-list{
     display: flex;
-    height: 300px;
-    width: 250px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.cafe {
+    flex: 1 1 calc(50% - 16px);
+    box-sizing: border-box;
 }
 .cafe-wrapper{
     background-color: #fff;
     display: flex;
-    flex-direction: column;
 
 }
 .business-info{
-
+}
 .cta-btn:hover{
     background-color: #8c4316cd;
 }
@@ -176,4 +259,41 @@ text-align: center;
 .review-area{
     display: flex;
     justify-content: center;
+    
+}
+.image-size{
+    height: 200px;
+    width: 200px;
+}
+
+.delete-button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(248, 110, 68, 0.831);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+}
+@media (min-width: 680px){
+    .modal-content{
+        width: 680px;
+        height: 500px;
+    }
+}
+@media (max-width: 679px) {
+    .modal-content {
+        margin: 10px;
+        width: 90%;
+        height: 60%;
+        top: 10%;
+        left: 3%;
+
+    }
 }
