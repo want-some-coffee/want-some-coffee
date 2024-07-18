@@ -31,13 +31,7 @@
   </head>
 
   <body>
-    <div class="cafe-wrapper">
-      <div>image</div>
-      <div class="business-info">
-        <h3>${cafe.name}</h3>
-        <p>${cafe.location.address1}</p>
-      </div>
-    </div>
+
     <!-- before reviewing -->
     <div class="container">
       <div id="cafe-list"></div>
@@ -111,13 +105,30 @@
         </div>
       </div>
 
+
+      <!-- modal -->
+  <div id="photoModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Upload Photo</h2>
+       <div id="dropArea" class="drop-area">
+        <p>Drag & Drop your file here or click to select a file</p>
+      <input type="file" id="photoInput" hidden multiple>
+      <div id="previewArea" class="preview-area"></div>
+    </div>
+    <button id="uploadPhotoButton">Upload</button>
+  </div>
+  </div>
+
+
+
       <!-- CTA Button -->
       <div class="cta-btn-area">
         <button class="cta-btn">Post</button>
       </div>
     </div>
 
-    <section class="container review-wrap">
+    <section class="container review-board">
       <div>
         <h2>recent reviews</h2>
         <div class="review-area">
