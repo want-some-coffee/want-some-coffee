@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>want some coffee?</title>
+    <!-- Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--navbar-->
+
+    <style>
+        #map {
+            height: 600px;
+            width: 400px;
+            position: absolute;
+            right: 0;
+        }
+
+        #cafes {
+            width: 30%;
+            /* 카페 목록 너비를 30%로 설정 */
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            /* 목록이 길어지면 스크롤 추가 */
+        }
+
+        #search {
+            margin: 50px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" id="location" placeholder="Enter a location">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="button" onclick="searchCafes()">Search Cafes</button>
+        </div>
+    </div>
+    <div id="map"></div>
+    <div id="cafes" class="row mt-4"></div>
+    <script src="app/map-api.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUHfgxFwPyV9HzpTexTvf2m1Y3AmRFYQo&callback=initMap"
+        async defer></script>
+    <!--footer-->
+
+</body>
+
+</html>
