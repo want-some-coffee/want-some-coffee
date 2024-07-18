@@ -1,7 +1,16 @@
+
 // apikey
 const yelpApiKey =
   "Up68Zn5jJ6Zsz2kpPMNoDC-xKea27bM2vfpqf-RMdxu56gZeJ5puyTJ6JlIvtNYm2FrNFF6WMn4W34jpOzbL_pOFaZJXmaUgAYDgFD5S5ov83sJu5MmyFFxFnDqYZnYx";
 const baseUrl = `https://api.yelp.com/v3/businesses/search?location=Toronto&categories=cafes&limit=10`;
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function fetchWithDelay(url) {
+  await delay(1000);
+  return fetch(url);
+}
 
 const options = {
   method: "GET",
@@ -14,72 +23,80 @@ const options = {
 let cafeList = [];
 let totalResults = 0;
 let selectedFilters = [];
+let rating = 0;
 
-// Fetch Yelp data and display in café list area
-const getCafes = async (url = baseUrl) => {
+async function fetchCafes() {
   try {
-    const response = await fetch(url, options);
-    console.log("response:", response);
+    const response = await axios.get('https://api.yelp.com/v3/businesses/search', {
+      headers: {
+        Authorization: `Bearer ${yelpApiKey}`,
+      },
+      params: {
+        term: 'cafe',
+        location: 'San Francisco', // Change location as needed
+        limit: 10,
+      },
+    });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error. Status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    console.log("Data fetched:", data);
-
-    if (data.businesses && data.businesses.length > 0) {
-      drawCafeList(data.businesses);
-    } else {
-      displayError("No cafés found.", true);
-    }
+    displayCafes(response.data.businesses);
   } catch (error) {
-    console.error("Error fetching and parsing data", error);
+    console.error('Error fetching data from Yelp API:', error);
   }
-};
+}
 
-// ///practice--------------------------------
-
-document.addEventListener("DOMContentLoaded", async () => {
-  const data = await getCafes();
-  if (data && data.businesses) {
-    drawCafeList(data.businesses);
-    populateCafeSelect(data.businesses);
-  }
-});
-
-// Populate café select dropdown
-const populateCafeSelect = (cafes) => {
-  const cafeSelect = document.getElementById("cafe-select");
-  cafes.forEach((cafe) => {
-    const option = document.createElement("option");
-    option.value = cafe.id;
-    option.textContent = cafe.name;
-    cafeSelect.appendChild(option);
-  });
-};
-
-
-
-// Display café list
-
-const drawCafeList = (cafes) => {
-  const cafeListDiv = document.getElementById("cafe-list");
+function displayCafes(cafes) {
+  const cafeListDiv = document.getElementById('cafeListDiv');
   cafeListDiv.innerHTML = "";
+
   cafes.forEach((cafe) => {
-    const cafeDiv = document.createElement("div");
-    cafeDiv.className = "cafe";
-    cafeDiv.innerHTML = `
-    <div class="cafe-wrapper">
-    <img class="image-size" src="${cafe.image_url}" alt="${cafe.name}">
-    <div class="business-info">
-    <h3>${cafe.name}</h3>
-    <p>${cafe.location.address1}</p>
-    </div>
-    </div>`;
-    cafeListDiv.appendChild(cafeDiv);
+    const cafeCol = document.createElement("div");
+    cafeCol.className = "col";
+
+    cafeCol.innerHTML = `
+      <div class="card shadow-sm card-color">
+        <img class="bd-placeholder-img card-img-top" src="${cafe.image_url}" alt="${cafe.name}" width="100%" height="225">
+        <div class="card-body">
+          <h3 class="card-title">${cafe.name}</h3>
+          <p class="card-text">${cafe.location.address1}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+            </div>
+            <button class="btn btn-link p-0" onclick="toggleHeart(this)">
+              <i class="fas fa-heart text-body-secondary"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    cafeListDiv.appendChild(cafeCol);
   });
-};
+}
+
+function toggleHeart(button) {
+  const heartIcon = button.querySelector('i');
+  heartIcon.classList.toggle('text-danger'); // Toggle red color
+  heartIcon.classList.toggle('fas'); // Toggle solid heart
+  heartIcon.classList.toggle('far'); // Toggle outlined heart
+}
+
+fetchCafes();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ///practice end ----------------------------
@@ -114,10 +131,11 @@ const drawCafeList = (cafes) => {
     updateRatingText(index);
   }
 
-  function handleClick(event) {
-    const index = event.target.dataset.index;
-    fillBeans(index);
-    updateRatingText(index);
+function handleClick(event) {
+  const index = event.target.dataset.index;
+  rating = parseInt(index); 
+  fillBeans(index);
+  updateRatingText(index);
   }
 
   function fillBeans(index) {
@@ -139,9 +157,12 @@ const filterBtns = document.querySelectorAll(".filter-btn");
 
 filterBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
-    console.log("btn ", btn.textContent);
     btn.classList.toggle("selected");
-    console.log("class", btn.className);
+    if (btn.classList.contains("selected")) {
+      selectedFilters.push(btn.textContent);
+    } else {
+      selectedFilters = selectedFilters.filter(filter => filter !== btn.textContent);
+    }
   });
 });
 
@@ -154,9 +175,9 @@ const charCountMessage = document.getElementById("char-count");
 
 textInput.addEventListener("input", () => {
   const textLength = textInput.value.length;
-  if (textLength < 80) {
+  if (textLength < 40) {
     charCountMessage.textContent = `Count: ${textLength}`;
-  } else if ((textLength) => 80) {
+  } else if ((textLength) => 40) {
     charCountMessage.textContent = `Great!`;
   } else {
     charCountMessage.textContent = "";
@@ -179,9 +200,8 @@ textInput.addEventListener("input", () => {
   const photoArea = document.querySelector(".photo-area");
   const previewArea = document.getElementById("previewArea");
   const ctaButton = document.querySelector(".cta-btn");
-
-
-  const reviewArea = document.querySelector(".review-area");
+ 
+  const reviewArea = document.querySelector(".review-board");
 
 
   let filesToUpload = [];
@@ -293,7 +313,7 @@ textInput.addEventListener("input", () => {
       reader.readAsDataURL(file);
      
     });
-    filesToUpload = [];
+
   }
 
   uploadPhotoButton.addEventListener("click", () => {
@@ -310,59 +330,56 @@ textInput.addEventListener("input", () => {
   ///>
 
   // 7.click post
+
   
-  ctaButton.addEventListener("click", () => {
-    const reviewText = textInput.value.trim();
-    if (reviewText.length < 80) {
-      alert("Review must be at least 80 characters.");
-      return;
-    }
+ctaButton.addEventListener("click", () => {
+  const reviewText = textInput.value.trim();
+  if (reviewText.length < 40) {
+    alert("Review must be at least 40 characters.");
+    return;
+  }
 
-    const postContainer = document.createElement("div");
-    postContainer.className = "post-container";
+  const date = new Date().toLocaleDateString();
+  const beanImages = Array(rating).fill('<img src="css/icon/brown_coffee-bean-fill.svg" width="16">').join('');
+  const filterTags = selectedFilters.map(filter => `<div class="filter-ambience">${filter}</div>`).join('');
 
-    const reviewElement = document.createElement("p");
-    reviewElement.className = "review-text";
-    reviewElement.textContent = reviewText;
-    postContainer.appendChild(reviewElement);
+  const photos = filesToUpload.map(file => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      return `<img src="${e.target.result}" class="board-image">`;
+    };
+    reader.readAsDataURL(file);
+  }).join('');
 
-    const ratingElement = document.createElement("p");
-    ratingElement.textContent = `Rating: ${ratingText.textContent}`;
-    postContainer.appendChild(ratingElement);
+  const reviewHtml = `
+    <div class="profile-wrap" id="review-section">
+      <img class="review-profile" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSny4PnXoYsvn0pbc8QDlr3TEcculK75Px4mbWh8chRwRRcOv4N" alt="profile photo">
+      <div class="profile-content">
+        <div class="fs-5 fw-bold text-capitalize text">User name</div>
+        <div class="profile-name">
+          <div class="bean-date-wrap">
+            <div class="bean-rate">${beanImages}</div>
+            <div class="">${date}</div>
+          </div>
+        </div>
+        <div class="filters-container">${filterTags}</div>
+        <div>${reviewText}</div>
+        <div class="photo-area">${photos}</div>
+      </div>
+    </div>`;
 
-    const filtersElement = document.createElement("p");
-    filtersElement.textContent = `Ambience: ${selectedFilters.join(", ")}`;
-    postContainer.appendChild(filtersElement);
-
-    if (filesToUpload.length) {
-      filesToUpload.forEach(file => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const img = document.createElement("img");
-          img.src = e.target.result;
-          img.className = "board-image";
-          postContainer.appendChild(img);
-        };
-        reader.readAsDataURL(file);
-      });
-    }
-
-    reviewArea.appendChild(postContainer);
-
-
-
-    //>>show modal or something that indicate success.
-
-   
+  reviewArea.innerHTML += reviewHtml;
 
   // Clear the inputs and arrays
-    textInput.value = "";
-    charCountMessage.textContent = "you need at least 80 words";
-    filesToUpload = [];
-    selectedFilters = [];
-    fillBeans(0);
-    ratingText.textContent = "Give a rate!";
-  });
+  textInput.value = "";
+  charCountMessage.textContent = "you need at least 80 words";
+  filesToUpload = [];
+  selectedFilters = [];
+  fillBeans(0);
+  ratingText.textContent = "Give a rate!";
+});
+
+
 
  //8. check if my review updated on review section.
 
