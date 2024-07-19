@@ -1,15 +1,30 @@
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.nav-bar{
+    width: 100%;
+}
 body{
     background-color: #F5F2EB;
 }
 .head{
     text-align: center;
     margin: 1em;
+    background-color: z#8C4416;
 }
+/* cafe name */
 .cafe-name-wrap{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 10px;
+    background-color: #8c43160e;
+    border: solid 0.5px #8c431636;
+    border-radius: 5px;
+    width: 500px;
+    flex-wrap: wrap;
 }
 .cafe-name >h6{
     font-weight: 700;
@@ -20,6 +35,8 @@ body{
     font-size: 14px;
     color: #C1904E;
 }
+
+/* rate area */
 .cafe-score{
     display: flex;
     gap: 7px;
@@ -32,6 +49,9 @@ body{
     margin-top: 2em;
     margin-bottom: 2em;
 text-align: center;
+}
+.coffee-bean-wrap p{
+    font-weight: 600;
 }
 .coffee-bean{
     display: flex;
@@ -59,20 +79,24 @@ text-align: center;
     mask-size: contain;
     -webkit-mask-size: contain;
 }
+
+/* ambience */
 .question2{
     display: flex;
     justify-content: center;
     flex-direction: column;
     text-align: center;
 }
+.question2 p{
+    font-weight: 600;
+}
 .filter-btn-area{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 1em;
 }
-.filter-btn-area {
-    margin: 2em;
-}
+
 
 .filter-btn{
     border: solid 1px #C1904E; ;
@@ -90,6 +114,21 @@ text-align: center;
     background-color: #8C4416;
     color: #fff;
 }
+.filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: auto
+
+}
+.filter-ambience{
+    background-color: #8C4416;
+    border-radius: 50px;
+    padding: 3px 6px;
+    color: #ffffff;
+    margin: 3px;
+    font-size: 10px;
+}
+
 #text-input{
     width: 100%;
     height: 150px;
@@ -105,6 +144,8 @@ text-align: center;
 .text-area>p{
     color: #606060;
 }
+
+/* add photo */
 .photo-add{
     border: solid 1px #C1904E;
     color: #C1904E;
@@ -115,15 +156,96 @@ text-align: center;
 .photo-add:hover{
     background-color: #8c431629;
 }
-.photo-area{
-    display: flex;
+
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: #0000002c;
 }
-.photo{
-    margin: 1em;
+.modal-content{
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #b7b7b7;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+#photoInput{
+    font-size: 14px;
+    color: #C1904E;
+}
+#uploadPhotoButton{
+    margin-top: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #8C4416;
+    color: white;
+    padding: 8px 
+}
+#uploadPhotoButton:hover{
+    background-color: #8c4316ca;
+}
+
+.drop-area {
+    margin-top: 1em;
+    border: 1px dashed #C1904E;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #c18f4e17;
+    border-radius: 5px;
+    height: 60%;
+}
+.drop-area>p{
+    color: #8C4416;
+}
+.drop-area.dragover{
+    border-color: #333;
+    background-color: #f0f0f0;
+}
+.photo-area, .preview-area{
+    display: flex;
+    flex-direction: row;
+    
+}
+.photo-area img, .preview-area img{
+    max-width: 100px;
+    max-height: 100px;
     width: 100px;
     height: 100px;
-    background-color: lightblue;
+    display: block;
+    margin: 5px;
 }
+
+#photoInput{
+    margin-bottom: 1em;
+}
+.add-photo-area {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+/* post */
 .cta-btn-area{
     margin-top: 2em;
     display: flex;
@@ -151,19 +273,187 @@ text-align: center;
     justify-content: center;
 }
 
-/* javascrip css */
+/* progress bar */
+ .rating-container {
+            display: flex;
+            align-items: center;
+        }
+        .beans {
+            display: flex;
+            align-items: center;
+    
+        }
+        .bean-left{
+            display: flex;
+            flex-direction: column;
+        }
+        .beans img {
+            width: 20px;
+            height: 20px;
+            margin: 3px;
+        }
+        .summary-wrap{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: none;
+        }
+        .rating-text {
+            margin-left: 10px;
+            text-align: center;
+            color: rgba(200, 136, 39, 0.726);
+            font-size: 14px;
+        }
+        .bar-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            justify-content: center;
+        }
+        .bar-wrap{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+        }
+        .bar-label {
+            width: 60px;
+            font-size: 14px;
+        }
+        .progress {
+            width: 200px;
+            margin-left: 10px;
+        }
+        .progress-bar {
+            background-color: rgb(250, 163, 31);
+        }
+
+
+/* review area */
+.review-board {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.review-board > h2{
+    text-align: center;
+    margin-top: 3em;
+}
+.review-here{
+    display: flex;
+}
+.profile-card{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+}
+.profile-wrap {
+    display: flex;
+    align-items: flex-start;
+    border: solid 1px #c18f4e48;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #c18f4e17;
+    justify-content: center;
+
+}
+#review-section{
+    max-width: 500px;
+    margin-top: 2em ;
+
+}
+.review-profile {
+    flex-shrink: 0;
+    width: 55px;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.profile-content {
+    max-width: 500px;
+}
+
+.bean-date-wrap {
+    display: flex;
+    justify-content: left;
+    gap: 15px;
+}
+
+.bean-rate img {
+    margin-right: 2px;
+}
+/* cafe info */
+
 .cafe-list{
     display: flex;
-    height: 300px;
-    width: 250px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.cafe {
+    flex: 1 1 calc(50% - 16px);
+    box-sizing: border-box;
 }
 .cafe-wrapper{
     background-color: #fff;
     display: flex;
-    flex-direction: column;
 
 }
-.business-info{
+.cafe-box{
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    background-color: #f2f2f2;
+    overflow-y: auto;
+    transition: right 0.5s ease;
+    padding: 1em;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.057);
+    border-left: solid 1px rgba(0, 0, 0, 0.077);
+}
+.cafe-box.open{
+    right: 0;
+}
+.arrow-right, .arrow-left {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 20px;
+    right: -1px;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+    background-color: #8C4416;
+    color: white;
+    z-index: 1001;
+    padding: 10px;
+
+}
+.arrow-left{
+    right: 100%;
+    transform: translateX(100%);
+}
+
+.cafe-box.open .arrow-left {
+    display: block;
+}
+
+.arrow-right{
+    left: -30px;
+}
+
+.cafe-box:not(.open) .arrow-right{
+    display: block;
+}
+/* javascrip css */
+
+
 
 .cta-btn:hover{
     background-color: #8c4316cd;
@@ -176,4 +466,71 @@ text-align: center;
 .review-area{
     display: flex;
     justify-content: center;
+    
+}
+.image-size{
+    height: 200px;
+    width: 200px;
+}
+
+.delete-button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(248, 110, 68, 0.831);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+}
+.board-image {
+    width: 150px;
+    height: 150px;
+    max-width: 100%;
+}
+.wrap-all{
+    display: flex;
+    justify-content: left;
+    padding-left: 10%;
+}
+
+
+
+@media (min-width: 680px){
+    .modal-content{
+        width: 680px;
+        height: 500px;
+    }
+    .review-area{
+        display: flex;
+        justify-content: center;
+        width: 600px;
+}
+}
+@media (max-width: 679px) {
+    .modal-content {
+        margin: 10px;
+        width: 90%;
+        height: 60%;
+        top: 10%;
+        left: 3%;
+    }
+
+
+    }
+@media (max-width: 1000px){
+    .cafe-box{
+        display: none;
+    }    
+
+}
+@media (max-width: 575px){
+    .wrap-all {
+            padding: 0;
+        }
 }

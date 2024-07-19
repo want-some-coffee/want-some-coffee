@@ -12,9 +12,13 @@ body {
 }
 .head-nav i{
     margin: 10px;
+    cursor: pointer;
+}
+.head-nav i:hover{
+    background-color: #8c43161a;
 }
 .side-menu{
-    height: 100vh;
+    height: 100%;
     width: 0;
     position: fixed;
     z-index: 10;
@@ -39,8 +43,8 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: 100px;
-
 }
+
 .side-menu-list button{
     border: none;
     background: none;
