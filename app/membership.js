@@ -93,3 +93,23 @@ function logout() {
 }
 
 
+let registerInputs = document.querySelectorAll('.register-input');
+
+registerInputs.forEach(input => {
+    input.addEventListener("keydown", function (event) {
+        if (event.keyCode === 13) { 
+            register();
+        }
+    });
+});
+
+
+let loginInputs = document.querySelectorAll('.login-input');
+
+loginInputs.forEach(input => {
+    input.addEventListener("keydown", function(event) {
+        if (event.keyCode === 13) {
+            login();
+        }
+    })
+})
