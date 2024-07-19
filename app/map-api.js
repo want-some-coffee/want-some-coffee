@@ -28,6 +28,34 @@ function initMap() {
   }
 }
 
+document.getElementById('goToMyLocation').addEventListener('click', moveToCurrentLocation);
+
+function moveToCurrentLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+      map.setCenter(pos);
+      if (userMarker) {
+        userMarker.setPosition(pos);
+      } else {
+        userMarker = new google.maps.Marker({
+          position: pos,
+          map: map,
+          title: 'You are here',
+        });
+      }
+    });
+  } else {
+    alert("Can't find the location");
+  }
+}
+
+window.onload = initMap;
+
+
 const yelpAPI = 'kIrjDqF68bBxQuQ2oASKMilcGPTcgR9uOdCOKHXVxbCSg96wj-EPsShqiv_igpVi2V90fJtvu-0hQDPyzXHl7cemU1E62wz7Jo5x0C1XfzPogjXJL54-PepA2H-ZZnYx'
 
 // 은미님 api 'P8yrZJ5yne3K8xtnN9mu5kPWG39xDyF8LiR7W8IFcgvHpeVyuimRuUHwsAUa_gslcPCTNP3UPYU_GjeEkP22hvjCO3LvMpthn7IEFP0ooQ2yeOgkszVS9YbszuuXZnYx'
@@ -76,17 +104,76 @@ function generateBeans(rating) {
     return stars;
   }
 
+  const updateMapMarkers = (cafes) => {
+    map.markers && map.markers.forEach(marker => marker.setMap(null));
+    map.markers = [];
+  
+    cafes.forEach(cafe => {
+      const marker = new google.maps.Marker({
+        position: { lat: cafe.coordinates.latitude, lng: cafe.coordinates.longitude },
+        map: map,
+        title: cafe.name,
+        // icon: 'css/icon/brown_coffee-bean-fill.svg', // 원하는 아이콘 설정
+      });
+  
+      const infoWindow = new google.maps.InfoWindow({
+        content: `<div style="width: 250px; height: 200px;">
+                    <h5 style="text-align: center;">${cafe.name}</h5>
+                    <img src="${cafe.image_url}" alt="${cafe.name}" style="width: 100%; height: 120px; object-fit: cover;">
+                    <div style="text-align: center; margin-top: 10px;">${generateBeans(cafe.rating)}</div>
+                  </div>`,
+        disableAutoPan: false
+      });
+  
+      marker.addListener('mouseover', () => {
+        infoWindow.open(map, marker);
+      });
+  
+      marker.addListener('mouseout', () => {
+        infoWindow.close();
+      });
+  
+      map.markers.push(marker);
+    });
+  }
+
 const filterByRating = (minRating) => {
   const filteredCafeList = cafeList.filter(cafe => cafe.rating >= minRating);
   drawCafeList(filteredCafeList);
-}
+  updateMapMarkers(filteredCafeList); 
 
+}
 
 const filterByOpenStatus = () => {
   const filteredCafeList = cafeList.filter(cafe => cafe.business_hours && cafe.business_hours[0] && cafe.business_hours[0].is_open_now); 
   drawCafeList(filteredCafeList);
+  updateMapMarkers(filteredCafeList);
 }
 
+const filterByReviews = () => {
+  const sortedCafeList = [...cafeList].sort((a, b) => b.review_count - a.review_count); 
+  drawCafeList(sortedCafeList); 
+  updateMapMarkers(filteredCafeList);
+}
+
+const filterByBreakfast = () => {
+  const filteredCafeList = cafeList.filter(cafe => 
+    cafe.categories.some(category => category.alias === 'breakfast_brunch')); 
+  drawCafeList(filteredCafeList); 
+  updateMapMarkers(filteredCafeList);
+}
+
+const filterByDelivery = () => {
+  const filteredCafeList = cafeList.filter(cafe => cafe.attributes && cafe.attributes.delivery); 
+  drawCafeList(filteredCafeList); 
+  updateMapMarkers(filteredCafeList);
+}
+
+const filterByReservation = () => {
+  const filteredCafeList = cafeList.filter(cafe => cafe.attributes && cafe.attributes.waitlist_reservation); 
+  drawCafeList(filteredCafeList);
+  updateMapMarkers(filteredCafeList); 
+}
 
 const drawCafeList = (cafeList) => { 
   console.log('Drawing café list:', cafeList);
@@ -111,6 +198,7 @@ const drawCafeList = (cafeList) => {
 
   document.getElementById('cafes').innerHTML = cafeHTML; 
   }
+
 // 사용자가 입력한 위치를 기준으로 카페를 검색하는 함수
 async function searchCafes(location) {
   const latitude = location ? location.lat : map.getCenter().lat(); 
@@ -193,4 +281,10 @@ function geocodeLocation() {
   document.getElementById('filter-rating-4').addEventListener('click', () => filterByRating(4)); 
   document.getElementById('filter-rating-3').addEventListener('click', () => filterByRating(3)); 
   document.getElementById('filter-open').addEventListener('click', filterByOpenStatus);
+  document.getElementById('filter-by-reviews').addEventListener('click', filterByReviews); 
+  document.getElementById('filter-breakfast').addEventListener('click', filterByBreakfast);
+  document.getElementById('filter-delivery').addEventListener('click', filterByDelivery); 
+  document.getElementById('filter-reservation').addEventListener('click', filterByReservation); 
+
+
   
