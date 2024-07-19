@@ -82,7 +82,7 @@ async function fetchCafes(latitude, longitude) {
 // 리뷰 아이콘을 생성하는 함수 
 function generateBeans(rating) {
     const fullStarUrl = 'css/icon/brown_coffee-bean-fill.svg'; 
-    const halfStarUrl = 'https://cdn.iconscout.com/icon/premium/png-256-thumb/half-star-6-1180349.png?f=webp'; 
+    const halfStarUrl = 'css/icon/half-filled-bean.svg'; 
     const emptyStarUrl = 'css/icon/brown_coffee-bean-fill.svg'; 
     
     const fullStar = `<img src="${fullStarUrl}" class="star" alt="Full Star" />`; 
