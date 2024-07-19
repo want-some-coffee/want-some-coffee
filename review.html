@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,9 +31,13 @@
     <link rel="stylesheet" href="css/nav.css">
   </head>
 
-  <body>    <section class="container side-menu-wrap">
+
+  <div>    
+
+    <!-- nav -->
+    <section class="container side-menu-wrap">
       <div class="side-menu">
-        <button class="close-btn">&times;</button>
+        <button class="close-btn" onclick="closeNav()">&times;</button>
         <div class="side-menu-list" id="menu-list">
           <button>Home</button>
           <button>About</button>
@@ -61,7 +65,7 @@
           </svg>
           <p>CAFE FINDER</p>
         </div>
-        <i class="fa-solid fa-bars"></i>
+        <i class="fa-solid fa-bars" onclick="openNav()"></i>
       </div>
     </section>
 
@@ -119,20 +123,14 @@
 
 
     <!-- before reviewing -->
-      <div class="album py-5 ">
-        <div class="container">
-          <div id="cafeListDiv" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <!-- Cafe cards will be inserted here by JavaScript -->
-          </div>
-        </div>
-      </div>
+     <div class="wrap-all">
 
     <!-- review start -->
-
+    <div class="all-reivew-wrap">
     <div class="container review-area">
     <div id="review-form">
       
-      <section>
+      <section>   
         <h3 class="head">Write a review</h3>
         <div class="cafe-name-wrap">
           <div class="cafe-name">
@@ -221,37 +219,60 @@
 </div>
 
     <!-- recent review  -->
-<section class="container review-board">
+<div class="container review-board">
   <h2>Recent reviews</h2>
 <!-- review summary -->
 
-<div class="review-summary row">
-
-  <div class="col-4">
-    <p>overall rating</p>
-    <div>   
-      <img src="css/icon/brown_coffee-bean-fill.svg" width="16">
-      <img src="css/icon/brown_coffee-bean-fill.svg" width="16">
-      <img src="css/icon/brown_coffee-bean-fill.svg" width="16">
-      <img src="css/icon/brown_coffee-bean-fill.svg" width="16">
-      <img src="css/icon/brown_coffee-bean-fill.svg" width="16">
+    <div class="container mt-5">
+        <div class="row summary-wrap">
+            <div class="bean-left  col-md-5 align-items-center">
+            <div class="beans col-md-3 d-flex align-items-center justify-content-center">
+                <img src="./css/icon/brown_coffee-bean-fill.svg" alt="rate-bean">
+                <img src="./css/icon/brown_coffee-bean-fill.svg" alt="rate-bean">
+                <img src="./css/icon/brown_coffee-bean-fill.svg" alt="rate-bean">
+                <img src="./css/icon/brown_coffee-bean-fill.svg" alt="rate-bean">
+                <img src="./css/icon/brown_coffee-bean-fill.svg" alt="rate-bean">
+                </div>
+                <div class="rating-text">24 reviews</div>
+            </div>
+            <div class="bar-wrap col-md-7 mx-auto">
+                <div class="bar-container">
+                    <div class="bar-label">5 stars</div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-label">4 stars</div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-label">3 stars</div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-label">2 stars</div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-label">1 star</div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   </div>
-  <div class="col-8">
-    <div>sdfsdf</div>
-    <div>hello</div>
-  </div>
 
-  </div>
-
-
-
-
-
-
-
-
-
+  <div class="container profile-card">
+     <div class="review-here"> </div>
   <div class="profile-wrap" id="review-section" >
     <img class="review-profile" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSny4PnXoYsvn0pbc8QDlr3TEcculK75Px4mbWh8chRwRRcOv4N" alt="profile photo">
     <div class="profile-content">
@@ -270,8 +291,80 @@
       </div>
       <div>Now the food, atmosphere, and multiple bar stations was truly remarkable. Walking around was sooo overwhelming I wanted to make sure I could try everything I could! They didn't run out of food, the food options were all so different and inclusive, and I saw some of local eateries that I've always wanted to try here!! (I'm looking at you carmines and zippy's).</div>
     </div>
+    </div>
+    </div>
+  </div>
+    
+    <!-- explore cafe  -->
+    <div class="cafe-box">
+      <i class="fa-solid fa-arrow-right arrow-right" onclick="closeSideBar()"></i>
+      <i class="fa-solid fa-arrow-left arrow-left" onclick="openSideBar()"></i>
+
+        <div class="container album py-5  cafe-info">
+          
+          <div id="cafeListDiv" class="row row-1 row-sm-2 row-md-3 g-3">
+            <h5>Cafe near you!</h5>
+            <!-- Cafe cards will be inserted here by JavaScript -->
+          <div class="card ">
+              <img class="bd-placeholder-img card-img-top" src="${cafe.image_url}" alt="${cafe.name}" width="100%" height="225">
+        <div class="card-body">
+          <h3 class="card-title">${cafe.name}</h3>
+          <p class="card-text">${cafe.location.address1}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Write a review</button>
+            </div>
+            <button class="btn btn-link p-0" onclick="toggleHeart(this)">
+              <i class="fas fa-heart text-body-secondary"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+             <div class="card shadow-sm card-color">
+        <img class="bd-placeholder-img card-img-top" src="${cafe.image_url}" alt="${cafe.name}" width="100%" height="225">
+        <div class="card-body">
+          <h3 class="card-title">${cafe.name}</h3>
+          <p class="card-text">${cafe.location.address1}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Write a review</button>
+            </div>
+            <button class="btn btn-link p-0" onclick="toggleHeart(this)">
+              <i class="fas fa-heart text-body-secondary"></i>
+            </button>
+          </div>
+        </div>
+      </div>      <div class="card shadow-sm card-color">
+        <img class="bd-placeholder-img card-img-top" src="${cafe.image_url}" alt="${cafe.name}" width="100%" height="225">
+        <div class="card-body">
+          <h3 class="card-title">${cafe.name}</h3>
+          <p class="card-text">${cafe.location.address1}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Write a review</button>
+            </div>
+            <button class="btn btn-link p-0" onclick="toggleHeart(this)">
+              <i class="fas fa-heart text-body-secondary"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    </lang=>
   </div>
 </section>
+
+
+
+
+
 
     <!-- footer -->
      <div class="footer-wrap align-items-end">
@@ -291,11 +384,14 @@
                 <i class="fa-brands fa-x-twitter" ></i>
                 <i class="fa-brands fa-instagram"></i>
                 <i class="fa-brands fa-facebook"></i>
+                </ul>
+            </div>
         </footer>
         </div>
         </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="app/review.js"></script>
+    <script src="app/nav.js"></script>
   </body>
 </html>
