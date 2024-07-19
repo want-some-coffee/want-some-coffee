@@ -1,9 +1,5 @@
-// apikey
-export const yelpApiKey =
-  'P8yrZJ5yne3K8xtnN9mu5kPWG39xDyF8LiR7W8IFcgvHpeVyuimRuUHwsAUa_gslcPCTNP3UPYU_GjeEkP22hvjCO3LvMpthn7IEFP0ooQ2yeOgkszVS9YbszuuXZnYx';
-export const baseUrl = `https://api.yelp.com/v3/businesses/search?location=Toronto&categories=cafes&limit=10`;
-
-// cLCckwvPZ64EAo3l2oCqdkYwO92JumAudkV78b84mY_4StYXylEUG0u4R6exM-pnEv3OGRQK16VM_jvgBWBHTwR0jqrBEmhLOWNYTEuaSoodzEYYMAl2PW9ZWBSOZnYx
+import { baseUrl, yelpApiKey } from './apiKey.js';
+import { drawPagination } from './pagination.js';
 
 const options = {
   method: 'GET',
@@ -14,12 +10,7 @@ const options = {
 };
 
 export let cafeList = [];
-export let totalResults = 0;
-
-// function to convert military time to standard time using Moment.js
-const convertTime = (time) => {
-  return moment(time, 'HHmm').format('h:mm A');
-};
+export let dataTotal = 0;
 
 // Fetch Yelp data and display in café list area
 export const getCafes = async (url = baseUrl) => {
@@ -36,9 +27,12 @@ export const getCafes = async (url = baseUrl) => {
 
     if (data.businesses && data.businesses.length > 0) {
       cafeList = data.businesses;
-      totalResults = data.totalResults;
+      dataTotal = data.total;
+      console.log('Cafe list:', cafeList);
+      console.log('data total:', dataTotal);
 
       drawCafeList(data.businesses);
+      drawPagination();
     } else {
       displayError('No cafés found.', true);
     }
