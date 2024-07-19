@@ -39,11 +39,15 @@ body{
 /* rate area */
 .cafe-score{
     display: flex;
-    gap: 7px;
+    gap: 3px;
     justify-content: center;
 }
-.cafe-score>p{
-    font-size: 20px;
+.cafe-score>img{
+    margin: 3px;
+}
+.cafe-name-rate{
+    display: flex;
+    justify-content: space-between;
 }
 .coffee-bean-wrap{
     margin-top: 2em;

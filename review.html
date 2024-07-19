@@ -129,23 +129,24 @@
     <div class="all-reivew-wrap">
     <div class="container review-area">
     <div id="review-form">
-      
-      <section>   
-        <h3 class="head">Write a review</h3>
-        <div class="cafe-name-wrap">
-          <div class="cafe-name">
-            <h6>Cafe name</h6>
-            <p>Read our review guidelines</p>
+      <h3 class="head">Write a review</h3>
+      <section class="container id=cafeId">   
+        <div class="cafe-name-wrap row">
+          <img class="col-md-5" id="cafe-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS77usMBL6Dscc1rObRNP87Z08RUYE3S30jA&s" width="100px">
+
+          <div class="cafe-name col-md-7">
+            <div class="cafe-name-rate">
+                <h6 id="cafe-name">Cafe name</h6>
+                <div class="cafe-score">
+                  <img
+                  src="css/icon/brown_coffee-bean-fill.svg"
+                  width="16px"
+                  height="16px"/>
+                  <p id="cafe-score">4.0</p>
+                </div>
+            </div>           
+              <p id="cafe-info">cafe info</p>
           </div>
-          <div class="cafe-score">
-            <img
-              src="css/icon/brown_coffee-bean-fill.svg"
-              width="24px"
-              height="24px"
-            />
-            <p>4.0</p>
-          </div>
-        </div>
       </section>
 
       <!-- coffee bean -->
@@ -305,8 +306,8 @@
           <div id="cafeListDiv" class="row row-1 row-sm-2 row-md-3 g-3">
             <h5>Cafe near you!</h5>
             <!-- Cafe cards will be inserted here by JavaScript -->
-          <div class="card ">
-              <img class="bd-placeholder-img card-img-top" src="${cafe.image_url}" alt="${cafe.name}" width="100%" height="225">
+          <div class="card" id="cafe-board">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225">
         <div class="card-body">
           <h3 class="card-title">${cafe.name}</h3>
           <p class="card-text">${cafe.location.address1}</p>
@@ -322,7 +323,7 @@
         </div>
       </div>
              <div class="card shadow-sm card-color">
-        <img class="bd-placeholder-img card-img-top" src="${cafe.image_url}" alt="${cafe.name}" width="100%" height="225">
+        <img class="bd-placeholder-img card-img-top"  width="100%" height="225">
         <div class="card-body">
           <h3 class="card-title">${cafe.name}</h3>
           <p class="card-text">${cafe.location.address1}</p>
@@ -337,7 +338,7 @@
           </div>
         </div>
       </div>      <div class="card shadow-sm card-color">
-        <img class="bd-placeholder-img card-img-top" src="${cafe.image_url}" alt="${cafe.name}" width="100%" height="225">
+        <img class="bd-placeholder-img card-img-top"  width="100%" height="225">
         <div class="card-body">
           <h3 class="card-title">${cafe.name}</h3>
           <p class="card-text">${cafe.location.address1}</p>
@@ -390,7 +391,7 @@
         </div>
         </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script src="app/review.js"></script>
     <script src="app/nav.js"></script>
   </body>
