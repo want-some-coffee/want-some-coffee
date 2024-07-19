@@ -350,20 +350,20 @@ option[disabled]:first-child {
 }
 
 
-.profile-custom-modal .modal-content {
+.custom-modal .modal-content {
     background-color: #F9F9F4;
     border-radius: 10px;
     border: 1px solid #9E5F37;
 }
 
-.profile-custom-modal button {
+.custom-modal button {
     background-color: #C1904E;
     color: white;
     border-radius: 10px;
     border: none;
 }
 
-.profile-custom-modal button:hover {
+.custom-modal button:hover {
     background-color: #9E5F37;
     color: white;
 }
