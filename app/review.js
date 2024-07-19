@@ -1,7 +1,7 @@
 
 // apikey
 const yelpApiKey =
-  "Up68Zn5jJ6Zsz2kpPMNoDC-xKea27bM2vfpqf-RMdxu56gZeJ5puyTJ6JlIvtNYm2FrNFF6WMn4W34jpOzbL_pOFaZJXmaUgAYDgFD5S5ov83sJu5MmyFFxFnDqYZnYx";
+  "3LXhoqVQuNPN9Fbpe6XBxObTuW9XsX0cI9xiWYDdBua6blENanbIYOtELWopUeUQ361ODDlinkQ65KEV6EpUE9zBRhrZIWv6qlHfJjn85tfbuOJ8xqYFlL73o2ZZnYx";
 const baseUrl = `https://api.yelp.com/v3/businesses/search?location=Toronto&categories=cafes&limit=10`;
 
 function delay(ms) {
@@ -27,13 +27,13 @@ let rating = 0;
 
 async function fetchCafes() {
   try {
-    const response = await axios.get('https://api.yelp.com/v3/businesses/search', {
+    const response = await url('https://api.yelp.com/v3/businesses/search', {
       headers: {
         Authorization: `Bearer ${yelpApiKey}`,
       },
       params: {
         term: 'cafe',
-        location: 'San Francisco', // Change location as needed
+        location: location,
         limit: 10,
       },
     });
@@ -247,46 +247,44 @@ textInput.addEventListener("input", () => {
   })
 
   //display preview
-  function previewPhotos(files) {
-    previewArea.innerHTML = "";
-    files.forEach((file, index) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const imgContainer = document.createElement("div");
-        imgContainer.style.position = "relative";
-        const img = document.createElement("img");
-        img.src = e.target.result;
-        img.className = "preview-image";
-        imgContainer.appendChild(img);
+function previewPhotos(files) {
+  previewArea.innerHTML = "";
+  files.forEach((file, index) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const imgContainer = document.createElement("div");
+      imgContainer.style.position = "relative";
+      const img = document.createElement("img");
+      img.src = e.target.result;
+      img.className = "preview-image";
+      imgContainer.appendChild(img);
 
-        const deleteButton = document.createElement("button");
-        deleteButton.className = "delete-button";
-        deleteButton.innerHTML = '<i class="fas fa-times"></i>'; // Font Awesome "times" icon
-        deleteButton.addEventListener("click", () => {
-          filesToUpload.splice(index, 1);
-          previewPhotos(filesToUpload);
-        });
-        imgContainer.appendChild(deleteButton);
-        previewArea.appendChild(imgContainer);
-      };
-      reader.readAsDataURL(file);
-    });
-  }
-
-  
-  // open file
-  dropArea.addEventListener("click", () => {
-    photoInput.click();
-  })
-
-  //
-  photoInput.addEventListener("change", (event) => {
-    const files = event.target.files;
-    if (files.length) {
-      filesToUpload = [...filesToUpload, ...Array.from(files)];
-      previewPhotos(filesToUpload);
-    }
+      const deleteButton = document.createElement("button");
+      deleteButton.className = "delete-button";
+      deleteButton.innerHTML = '<i class="fas fa-times"></i>'; // Font Awesome "times" icon
+      deleteButton.addEventListener("click", () => {
+        filesToUpload.splice(index, 1);
+        previewPhotos(filesToUpload);
+      });
+      imgContainer.appendChild(deleteButton);
+      previewArea.appendChild(imgContainer);
+    };
+    reader.readAsDataURL(file);
   });
+}
+
+// Open file dialog
+dropArea.addEventListener("click", () => {
+  photoInput.click();
+});
+
+photoInput.addEventListener("change", (event) => {
+  const files = event.target.files;
+  if (files.length) {
+    filesToUpload = [...filesToUpload, ...Array.from(files)];
+    previewPhotos(filesToUpload);
+  }
+});
 
   function displayPhoto(files) {
     photoArea.innerHTML = "";
@@ -317,12 +315,12 @@ textInput.addEventListener("input", () => {
   }
 
   uploadPhotoButton.addEventListener("click", () => {
-    if (filesToUpload.length) {
-      displayPhoto(filesToUpload);
-      photoModal.style.display = "none";
-    } else {
-      alert("Please select a photo to upload.");
-    }
+  if (filesToUpload.length) {
+    displayPhoto(filesToUpload);
+    photoModal.style.display = "none";
+  } else {
+    alert("Please select a photo to upload.");
+  }
   });
 
 
@@ -343,42 +341,76 @@ ctaButton.addEventListener("click", () => {
   const beanImages = Array(rating).fill('<img src="css/icon/brown_coffee-bean-fill.svg" width="16">').join('');
   const filterTags = selectedFilters.map(filter => `<div class="filter-ambience">${filter}</div>`).join('');
 
-  const photos = filesToUpload.map(file => {
+  // Create photo HTML elements
+  let photosHtml = "";
+  filesToUpload.forEach(file => {
     const reader = new FileReader();
     reader.onload = (e) => {
-      return `<img src="${e.target.result}" class="board-image">`;
+      photosHtml += `<img src="${e.target.result}" class="board-image">`;
+
+      // Append the reviewHtml once all images are read
+      if (photosHtml.split('<img').length - 1 === filesToUpload.length) {
+        const reviewHtml = `
+          <div class="profile-wrap" id="review-section">
+            <img class="review-profile" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSny4PnXoYsvn0pbc8QDlr3TEcculK75Px4mbWh8chRwRRcOv4N" alt="profile photo">
+            <div class="profile-content">
+              <div class="fs-5 fw-bold text-capitalize text">User name</div>
+              <div class="profile-name">
+                <div class="bean-date-wrap">
+                  <div class="bean-rate">${beanImages}</div>
+                  <div class="">${date}</div>
+                </div>
+              </div>
+              <div class="filters-container">${filterTags}</div>
+              <div>${reviewText}</div>
+              <div class="photo-area">${photosHtml}</div>
+            </div>
+          </div>`;
+
+        reviewArea.innerHTML += reviewHtml;
+
+        // Clear the inputs and arrays
+        textInput.value = "";
+        charCountMessage.textContent = "you need at least 80 words";
+        filesToUpload = [];
+        selectedFilters = [];
+        fillBeans(0);
+        ratingText.textContent = "Give a rate!";
+      }
     };
     reader.readAsDataURL(file);
-  }).join('');
+  });
 
-  const reviewHtml = `
-    <div class="profile-wrap" id="review-section">
-      <img class="review-profile" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSny4PnXoYsvn0pbc8QDlr3TEcculK75Px4mbWh8chRwRRcOv4N" alt="profile photo">
-      <div class="profile-content">
-        <div class="fs-5 fw-bold text-capitalize text">User name</div>
-        <div class="profile-name">
-          <div class="bean-date-wrap">
-            <div class="bean-rate">${beanImages}</div>
-            <div class="">${date}</div>
+ 
+  if (filesToUpload.length === 0) {
+    const reviewHtml = `
+      <div class="profile-wrap" id="review-section">
+        <img class="review-profile" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSny4PnXoYsvn0pbc8QDlr3TEcculK75Px4mbWh8chRwRRcOv4N" alt="profile photo">
+        <div class="profile-content">
+          <div class="fs-5 fw-bold text-capitalize text">User name</div>
+          <div class="profile-name">
+            <div class="bean-date-wrap">
+              <div class="bean-rate">${beanImages}</div>
+              <div class="">${date}</div>
+            </div>
           </div>
+          <div class="filters-container">${filterTags}</div>
+          <div>${reviewText}</div>
+          <div class="photo-area">${photosHtml}</div>
         </div>
-        <div class="filters-container">${filterTags}</div>
-        <div>${reviewText}</div>
-        <div class="photo-area">${photos}</div>
-      </div>
-    </div>`;
+      </div>`;
 
-  reviewArea.innerHTML += reviewHtml;
+    reviewArea.innerHTML += reviewHtml;
 
-  // Clear the inputs and arrays
-  textInput.value = "";
-  charCountMessage.textContent = "you need at least 80 words";
-  filesToUpload = [];
-  selectedFilters = [];
-  fillBeans(0);
-  ratingText.textContent = "Give a rate!";
+    // Clear the inputs and arrays
+    textInput.value = "";
+    charCountMessage.textContent = "you need at least 80 words";
+    filesToUpload = [];
+    selectedFilters = [];
+    fillBeans(0);
+    ratingText.textContent = "Give a rate!";
+  }
 });
-
 
 
  //8. check if my review updated on review section.
