@@ -1,7 +1,7 @@
 
 // apikey
 const yelpApiKey =
-  "nzEGK7IZq4z6Ie2DZ0JEUXgv-Xb7-GRGY09pFgd-CeTOH93FxGsqYnpWvAheHBUuDGB0KYG5IDgL-79afsLZoqS3J75BtQ12hF8k9TkQ3AQitH2vSw4xpH3X3HKaZnYx";
+  "3LXhoqVQuNPN9Fbpe6XBxObTuW9XsX0cI9xiWYDdBua6blENanbIYOtELWopUeUQ361ODDlinkQ65KEV6EpUE9zBRhrZIWv6qlHfJjn85tfbuOJ8xqYFlL73o2ZZnYx";
 const baseUrl = 'https://api.yelp.com/v3/businesses/search?location=Toronto&categories=cafes&limit=10';
 
 
@@ -78,15 +78,18 @@ const drawCafeList = () => {
 
 
 
-function openSideBar(){
-  document.querySelector(".cafe-box").classList.add("open");
-}
 function closeSideBar() {
-  document.querySelector(".cafe-box").classList.remove("open")
+    document.querySelector('.cafe-box').classList.add('closed');
+    document.querySelector('.cafe-box').classList.remove('open');
+}
+
+function openSideBar() {
+    document.querySelector('.cafe-box').classList.remove('closed');
+    document.querySelector('.cafe-box').classList.add('open');
 }
 
 function displayCafes(cafes) {
-  const cafeListDiv = document.getElementById('cafeListDiv');
+  const cafeListDiv = document.getElementById('cafe-info');
   cafeListDiv.innerHTML = "";
 
   cafes.forEach((cafe) => {
@@ -187,6 +190,8 @@ const fetchReviewHighlights = async (businessId) => {
   }
 };
 
+
+
 // Draw review highlights
 const drawReviewHighlights = (reviews) => {
   const reviewSection = document.getElementById('review-section');
@@ -197,8 +202,7 @@ const drawReviewHighlights = (reviews) => {
         <div class="fs-5 fw-bold text-capitalize text">${review.user.name}</div>
         <div class="profile-name">
           <div class="bean-date-wrap">
-            <div class="bean-rate">
-              ${Array.from({ length: review.rating }, () => '<img src="css/icon/brown_coffee-bean-fill.svg" width="16">').join('')}
+             <div class="bean-rate">${beanImages}</div>
             </div>
             <div class="">${new Date(review.time_created).toLocaleDateString()}</div>
           </div>
@@ -211,7 +215,8 @@ const drawReviewHighlights = (reviews) => {
 
 /// 3. coffee bean hoverover action
 // -> showing words accordingly.
-  let selectedFilters = [];
+let selectedFilters = [];
+  let rating = 0;
   const beans = document.querySelectorAll(".bean");
   const ratingText = document.querySelector(".rating-text");
   const ratings = [
@@ -303,7 +308,7 @@ textInput.addEventListener("input", () => {
   const previewArea = document.getElementById("previewArea");
   const ctaButton = document.querySelector(".cta-btn");
  
-  const reviewArea = document.querySelector(".review-here");
+  const reviewArea = document.querySelector(".profile-card");
 
 
   let filesToUpload = [];
@@ -440,10 +445,10 @@ ctaButton.addEventListener("click", () => {
   }
 
   const date = new Date().toLocaleDateString();
-  const beanImages = Array.from({ length: ratings }, (_, i) =>
+  const beanImages = Array.from({ length: 5 }, (_, i) =>
     i < rating
       ? '<img src="css/icon/brown_coffee-bean-fill.svg" width="16">'
-      : '<img src="css/icon/gray_coffee-bean-outline.svg" width="16">'
+      : '<img src="css/icon/gray_coffee-bean-fill.svg" width="16">'
   ).join("");
   const filterTags = selectedFilters
     .map((filter) => `<div class="filter-ambience">${filter}</div>`)
@@ -471,6 +476,8 @@ ctaButton.addEventListener("click", () => {
   }
 });
 
+let reviewsArray = [];
+
 function appendReview(reviewText, beanImages, date, filterTags, photosHtml) {
   const reviewHtml = `
     <div class="profile-wrap" id="review-section">
@@ -480,16 +487,19 @@ function appendReview(reviewText, beanImages, date, filterTags, photosHtml) {
         <div class="profile-name">
           <div class="bean-date-wrap">
             <div class="bean-rate">${beanImages}</div>
-            <div class="">${date}</div>
+            <div>${date}</div>
           </div>
         </div>
         <div class="filters-container">${filterTags}</div>
-        <div>${reviewText}</div>
+        <div class="review-text">${reviewText}</div>
         <div class="photo-area">${photosHtml}</div>
       </div>
     </div>`;
 
-  reviewArea.innerHTML += reviewHtml;
+  
+  reviewsArray.unshift(reviewHtml);
+
+  reviewArea.innerHTML = reviewsArray.join('');
 }
 
 function clearInputs() {
