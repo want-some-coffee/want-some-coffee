@@ -1,3 +1,7 @@
+const yelpAPI = 'kIrjDqF68bBxQuQ2oASKMilcGPTcgR9uOdCOKHXVxbCSg96wj-EPsShqiv_igpVi2V90fJtvu-0hQDPyzXHl7cemU1E62wz7Jo5x0C1XfzPogjXJL54-PepA2H-ZZnYx'
+
+// 은미님 api 'P8yrZJ5yne3K8xtnN9mu5kPWG39xDyF8LiR7W8IFcgvHpeVyuimRuUHwsAUa_gslcPCTNP3UPYU_GjeEkP22hvjCO3LvMpthn7IEFP0ooQ2yeOgkszVS9YbszuuXZnYx'
+
 let map;
 let userMarker;
 const cafesContainer = document.getElementById('cafes');
@@ -61,10 +65,36 @@ function moveToCurrentLocation() {
 
 window.onload = initMap;
 
+document.addEventListener('DOMContentLoaded', function () {
+  // Function to uncheck other checkboxes in the same group
+  function uncheckOthers(event) {
+      const checkboxes = document.querySelectorAll(`.${event.target.className}`);
+      checkboxes.forEach(checkbox => {
+          if (checkbox !== event.target) {
+              checkbox.checked = false;
+          }
+      });
+  }
 
-const yelpAPI = 'kIrjDqF68bBxQuQ2oASKMilcGPTcgR9uOdCOKHXVxbCSg96wj-EPsShqiv_igpVi2V90fJtvu-0hQDPyzXHl7cemU1E62wz7Jo5x0C1XfzPogjXJL54-PepA2H-ZZnYx'
+  // Add event listeners to each group of checkboxes
+  const priceCheckboxes = document.querySelectorAll('.filter-price');
+  const reviewCheckboxes = document.querySelectorAll('.filter-reviews');
+  const categoryCheckboxes = document.querySelectorAll('.filter-category');
 
-// 은미님 api 'P8yrZJ5yne3K8xtnN9mu5kPWG39xDyF8LiR7W8IFcgvHpeVyuimRuUHwsAUa_gslcPCTNP3UPYU_GjeEkP22hvjCO3LvMpthn7IEFP0ooQ2yeOgkszVS9YbszuuXZnYx'
+  priceCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', uncheckOthers);
+  });
+
+  reviewCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', uncheckOthers);
+  });
+
+  categoryCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', uncheckOthers);
+  });
+});
+
+
 
 // Yelp API를 사용하여 특정 위치 주변의 카페 정보를 가져오는 함수
 async function fetchCafes(latitude, longitude) {
@@ -142,6 +172,21 @@ function generateBeans(rating) {
       map.markers.push(marker);
     });
   }
+
+  const filterByPrice = (priceRange) => {
+    const filteredCafeList = cafeList.filter(cafe => {
+      if (priceRange === '$') {
+        return cafe.price === '$';
+      } else if (priceRange === '$$') {
+        return cafe.price === '$$';
+      } else if (priceRange === '$$$') {
+        return cafe.price === '$$$';
+      }
+      return false;
+    });
+    drawCafeList(filteredCafeList);
+    updateMapMarkers(filteredCafeList);
+  };
 
 const filterByRating = (minRating) => {
   const filteredCafeList = cafeList.filter(cafe => cafe.rating >= minRating);
@@ -234,7 +279,7 @@ async function searchCafes(location) {
 
       // InfoWindow 생성 
     const infoWindow = new google.maps.InfoWindow({
-        content: `<div style="width: 250px; height: 200px;"> <!-- InfoWindow 크기 조정 *** -->
+        content: `<div style="width: 250px; height: 250px;"> <!-- InfoWindow 크기 조정 *** -->
                     <h5 style="text-align: center;">${cafe.name}</h5>
                     <img src="${cafe.image_url}" alt="${cafe.name}" style="width: 100%; height: 120px; object-fit: cover;"> 
                     <div style="text-align: center; margin-top: 10px;">${generateBeans(cafe.rating)}</div> 
@@ -296,6 +341,9 @@ function geocodeLocation() {
   document.getElementById('filter-breakfast').addEventListener('click', filterByBreakfast);
   document.getElementById('filter-delivery').addEventListener('click', filterByDelivery); 
   document.getElementById('filter-reservation').addEventListener('click', filterByReservation); 
+  document.getElementById('filter-price-1').addEventListener('click', () => filterByPrice('$'));
+  document.getElementById('filter-price-2').addEventListener('click', () => filterByPrice('$$'));
+  document.getElementById('filter-price-3').addEventListener('click', () => filterByPrice('$$$'));
 
 
   

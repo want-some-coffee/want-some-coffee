@@ -36,11 +36,6 @@
             font-size: 20px;
         }
 
-        /* #map:focus {
-            outline: 20px solid #8C4416;
-        } */
-
-
 
         .input-group {
             width: 300px;
@@ -57,6 +52,7 @@
             height: 30px;
             margin-right: 2px;
         }
+
 
         .btn-custom {
             background-color: #ece4da;
@@ -115,56 +111,154 @@
             padding: 10px;
             cursor: pointer;
             font-weight: bold;
+        }
 
+        .sidebar {
+            width: 300px;
+            float: left;
+            background-color: white;
+            padding: 10px;
+            font-size: 23px;
+            margin-left: 50px;
+            margin-top: 100px;
+        }
+
+        .filter {
+            margin-bottom: 30px;
+        }
+
+        .filter h3 {
+            margin-bottom: 10px;
+            font-size: 25px;
+            color: #333;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+
+        }
+
+        .filter ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .filter ul li {
+            margin-bottom: 5px;
+        }
+
+        .filter ul li input {
+            margin-right: 10px;
+        }
+
+        .centered-cafes {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 500px;
+            margin-top: 200px;
+            max-width: 600px;
+        }
+
+        .btn-outline-primary {
+            width: 70px;
+            border-radius: 30px;
+            color: black;
+            border: 1px solid black
+        }
+
+        .filter-reviews+label img {
+            width: 25px;
+        }
+
+        .filter-reviews {
+            transform: scale(1.5);
+            margin: 10px;
+        }
+
+        .filter-category {
+            transform: scale(1.5);
+            margin: 10px;
         }
     </style>
 </head>
 
 <body>
+    <div>
+        <div class="sidebar">
+            <div class="filter">
+                <h3>Price</h3>
+                <div>
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check filter-price" name="btnradio" id="filter-price-1"
+                            autocomplete="off">
+                        <label class="btn btn-outline-primary" for="filter-price-1">$</label>
 
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" id="location" placeholder="Enter location">
-        <div class="input-group-append">
-            <button class="btn btn-primary" type="button" onclick="geocodeLocation()">Go</button>
+                        <input type="radio" class="btn-check filter-price" name="btnradio" id="filter-price-2"
+                            autocomplete="off">
+                        <label class="btn btn-outline-primary" for="filter-price-2">$$</label>
+
+                        <input type="radio" class="btn-check filter-price" name="btnradio" id="filter-price-3"
+                            autocomplete="off">
+                        <label class="btn btn-outline-primary" for="filter-price-3">$$$</label>
+                    </div>
+                </div>
+            </div>
+            <div class="filter">
+
+                <h3>Reviews</h3>
+                <ul>
+                    <li>
+                        <input type="checkbox" class="filter-reviews" id="filter-rating-3" autocomplete="off">
+                        <label for="filter-rating-3">
+                            <img src="css/icon/brown_coffee-bean-fill.svg" alt="Coffee Bean"></img>
+                            <img src="css/icon/brown_coffee-bean-fill.svg" alt="Coffee Bean"></img>
+                            <img src="css/icon/brown_coffee-bean-fill.svg" alt="Coffee Bean"></img>
+                            <span>+</span>
+
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="filter-reviews" id="filter-rating-3" autocomplete="off">
+                        <label for="filter-rating-3">
+                            <img src="css/icon/brown_coffee-bean-fill.svg" alt="Coffee Bean"></img>
+                            <img src="css/icon/brown_coffee-bean-fill.svg" alt="Coffee Bean"></img>
+                            <img src="css/icon/brown_coffee-bean-fill.svg" alt="Coffee Bean"></img>
+                            <img src="css/icon/brown_coffee-bean-fill.svg" alt="Coffee Bean"></img>
+                            <span>+</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="filter-reviews" id="filter-by-reviews" autocomplete="off">
+                        <label for="filter-by-reviews">Most Reviews</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="filter">
+                <h3>Category</h3>
+                <ul>
+                    <li>
+                        <input type="checkbox" class="filter-category" id="filter-open" autocomplete="off">
+                        <label for="filter-open">Open Now</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="filter-category" id="filter-breakfast" autocomplete="off">
+                        <label for="filter-breakfast">Breakfast</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="filter-category" id="filter-reservation" autocomplete="off">
+                        <label for="filter-reservation">Reservation</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="filter-category" id="filter-delivery" autocomplete="off">
+                        <label for="filter-delivery">Delivery</label>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-    <div>
-        <!-- <div class="btn-group mb-3" role="group" aria-label="Filter Cafes">
-            <button id="filter-rating-3" class="btn btn-secondary">Rating 3+</button>
-            <button id="filter-rating-4" class="btn btn-secondary">Rating 4+</button>
-            <button id="filter-open" class="btn btn-secondary">Open Now</button>
-            <button id="filter-by-reviews" class="btn btn-secondary">Most Reviews</button>
-            <button id="filter-breakfast" class="btn btn-secondary">Breakfast</button>
-            <button id="filter-delivery" class="btn btn-secondary">Delivery</button>
-            <button id="filter-reservation" class="btn btn-secondary">Reservation</button>
-        </div> -->
-        <div class="btn-group mb-3" role="group" aria-label="Filter Cafes">
-            <input type="radio" class="btn-check" name="btnradio" id="filter-rating-3" autocomplete="off" checked>
-            <label class="btn btn-secondary btn-custom" for="filter-rating-3">Rating 3+</label>
-
-            <input type="radio" class="btn-check" name="btnradio" id="filter-rating-4" autocomplete="off">
-            <label class="btn btn-secondary btn-custom" for="filter-rating-4">Rating 4+</label>
-
-            <input type="radio" class="btn-check" name="btnradio" id="filter-open" autocomplete="off">
-            <label class="btn btn-secondary btn-custom" for="filter-open">Open Now</label>
-
-            <input type="radio" class="btn-check" name="btnradio" id="filter-by-reviews" autocomplete="off">
-            <label class="btn btn-secondary btn-custom" for="filter-by-reviews">Most Reviews</label>
-
-            <input type="radio" class="btn-check" name="btnradio" id="filter-breakfast" autocomplete="off">
-            <label class="btn btn-secondary btn-custom" for="filter-breakfast">Breakfast</label>
-
-            <input type="radio" class="btn-check" name="btnradio" id="filter-delivery" autocomplete="off">
-            <label class="btn btn-secondary btn-custom" for="filter-delivery">Delivery</label>
-
-            <input type="radio" class="btn-check" name="btnradio" id="filter-reservation" autocomplete="off">
-            <label class="btn btn-secondary btn-custom" for="filter-reservation">Reservation</label>
-        </div>
-
 
     </div>
     <div id="map"></div>
-    <div id="cafes" class="row mt-4"></div>
+    <div id="cafes" class="centered-cafes"></div>
 
     <div id="search-btn" onclick="searchCafes()">Search this area</div>
     <button id="goToMyLocation"><i class="fas fa-location-arrow"></i></button>
