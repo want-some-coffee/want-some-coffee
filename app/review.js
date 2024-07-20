@@ -2,7 +2,9 @@
 // apikey
 const yelpApiKey =
   "3LXhoqVQuNPN9Fbpe6XBxObTuW9XsX0cI9xiWYDdBua6blENanbIYOtELWopUeUQ361ODDlinkQ65KEV6EpUE9zBRhrZIWv6qlHfJjn85tfbuOJ8xqYFlL73o2ZZnYx";
-const baseUrl = `https://api.yelp.com/v3/businesses/search?location=Toronto&categories=cafes&limit=10`;
+const baseUrl = 'https://api.yelp.com/v3/businesses/search?location=Toronto&categories=cafes&limit=10';
+
+
 
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -11,43 +13,83 @@ async function fetchWithDelay(url) {
   await delay(1000);
   return fetch(url);
 }
-async function getYelpData(map) {
-  const location = 'Toronto';
-  const category = 'cafes';
+const options = {
+  method: 'GET',
+  headers: {
+    Authorization: `Bearer ${yelpApiKey}`,
+    'Content-Type': 'application/json'
+  }
+};
 
-  const options = {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${yelpApiKey}`,
-      'Content-Type': 'application/json',
-    },
-  };
+let cafeList = [];
+let totalResults = 0;
 
+const getCafes = async (url=baseUrl) => {
   try {
-    const response = await fetch(
-      `https://api.yelp.com/v3/businesses/search?location=${location}&categories=${category}`,
-      options
-    );
+    const response = await fetch(url, options);
+    console.log('response:', response);
 
     if (!response.ok) {
-      throw new Error(`Error: ${response.status}`);
+      throw new Error(`HTTP error. Status: ${response.status}`);
     }
 
     const data = await response.json();
-    displayResultsOnMap(data.businesses, map);
+    console.log('Data fetched:', data);
+
+    if (data.businesses && data.businesses.length > 0) {
+      cafeList = data.businesses;
+      totalResults = data.totalResults;
+
+      drawCafeList(data.businesses);
+    } else {
+      displayError('No cafés found.', true);
+    }
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error('Error fetching and parsing data', error);
   }
-}
-function openSideBar(){
-  document.querySelector(".cafe-box").classList.add("open");
-}
+};
+
+// Draw café list
+const drawCafeList = () => {
+  console.log('Drawing café list:', cafeList);
+  const cafeHTML = cafeList
+    .map((cafe) => {
+      return `<img class="bd-placeholder-img card-img-top" src="${cafe.image_url}" width="100%" height="225">
+        <div class="card-body">
+          <h3 class="card-title">${cafe.name}</h3>
+          <p class="card-text">${cafe.location.address1}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Write a review</button>
+            </div>
+            <button class="btn btn-link p-0" onclick="toggleHeart(this)">
+              <i class="fas fa-heart text-body-secondary"></i>
+            </button>
+          </div>
+        </div>
+      `;
+    })
+    .join('');
+  document.getElementById('cafe-board').innerHTML = cafeHTML;
+};
+
+
+
+
+
 function closeSideBar() {
-  document.querySelector(".cafe-box").classList.remove("open")
+    document.querySelector('.cafe-box').classList.add('closed');
+    document.querySelector('.cafe-box').classList.remove('open');
+}
+
+function openSideBar() {
+    document.querySelector('.cafe-box').classList.remove('closed');
+    document.querySelector('.cafe-box').classList.add('open');
 }
 
 function displayCafes(cafes) {
-  const cafeListDiv = document.getElementById('cafeListDiv');
+  const cafeListDiv = document.getElementById('cafe-info');
   cafeListDiv.innerHTML = "";
 
   cafes.forEach((cafe) => {
@@ -83,6 +125,9 @@ function toggleHeart(button) {
   heartIcon.classList.toggle('fas'); // Toggle solid heart
   heartIcon.classList.toggle('far'); // Toggle outlined heart
 }
+document.addEventListener('DOMContentLoaded', (event) => {
+  getCafes();
+});
 
 
 ///practice end ----------------------------
@@ -90,12 +135,88 @@ function toggleHeart(button) {
 
 /// 1.call business name
 
+
 ///2. read our review guideline
 /// -> click event show modal about guidence
+// Update business details
+const updateBusinessDetails = (business) => {
+  document.getElementById('cafe-image').src = business.image_url;
+  document.getElementById('cafe-name').textContent = business.name;
+  document.getElementById('cafe-score').textContent = business.rating;
+  document.getElementById('cafe-info').textContent = business.location.address1;
+};
+
+// View details
+const viewDetails = async (businessId) => {
+  const url = `https://api.yelp.com/v3/businesses/${businessId}`;
+  try {
+    const response = await fetchWithDelay(url, options);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error. Status: ${response.status}`);
+    }
+
+    const business = await response.json();
+    console.log('Business details fetched:', business);
+    updateBusinessDetails(business);
+  } catch (error) {
+    console.error('Error fetching and parsing business details', error);
+  }
+};
+
+const displayError = (message, clearList = false) => {
+  if (clearList) {
+    document.getElementById('cafe-board').innerHTML = '';
+  }
+  alert(message);
+};
+
+
+// Fetch review highlights
+const fetchReviewHighlights = async (businessId) => {
+  const url = `https://api.yelp.com/v3/businesses/${businessId}/review_highlights?count=3`;
+  try {
+    const response = await fetch(url, options);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error. Status: ${response.status}`);
+    }
+
+    const reviewData = await response.json();
+    console.log('Review highlights fetched:', reviewData);
+    drawReviewHighlights(reviewData.review_highlights);
+  } catch (error) {
+    console.error('Error fetching and parsing review highlights', error);
+  }
+};
+
+
+
+// Draw review highlights
+const drawReviewHighlights = (reviews) => {
+  const reviewSection = document.getElementById('review-section');
+  reviewSection.innerHTML = reviews.map(review => `
+    <div class="profile-wrap">
+      <img class="review-profile" src="${review.user.profile_url}" alt="profile photo">
+      <div class="profile-content">
+        <div class="fs-5 fw-bold text-capitalize text">${review.user.name}</div>
+        <div class="profile-name">
+          <div class="bean-date-wrap">
+             <div class="bean-rate">${beanImages}</div>
+            </div>
+            <div class="">${new Date(review.time_created).toLocaleDateString()}</div>
+          </div>
+        </div>
+        <div>${review.text}</div>
+      </div>
+    </div>
+  `).join('');
+};
 
 /// 3. coffee bean hoverover action
 // -> showing words accordingly.
-  let selectedFilters = [];
+let selectedFilters = [];
+  let rating = 0;
   const beans = document.querySelectorAll(".bean");
   const ratingText = document.querySelector(".rating-text");
   const ratings = [
@@ -187,7 +308,7 @@ textInput.addEventListener("input", () => {
   const previewArea = document.getElementById("previewArea");
   const ctaButton = document.querySelector(".cta-btn");
  
-  const reviewArea = document.querySelector(".review-here");
+  const reviewArea = document.querySelector(".profile-card");
 
 
   let filesToUpload = [];
@@ -324,10 +445,10 @@ ctaButton.addEventListener("click", () => {
   }
 
   const date = new Date().toLocaleDateString();
-  const beanImages = Array.from({ length: rating }, (_, i) =>
+  const beanImages = Array.from({ length: 5 }, (_, i) =>
     i < rating
       ? '<img src="css/icon/brown_coffee-bean-fill.svg" width="16">'
-      : '<img src="css/icon/gray_coffee-bean-outline.svg" width="16">'
+      : '<img src="css/icon/gray_coffee-bean-fill.svg" width="16">'
   ).join("");
   const filterTags = selectedFilters
     .map((filter) => `<div class="filter-ambience">${filter}</div>`)
@@ -355,6 +476,8 @@ ctaButton.addEventListener("click", () => {
   }
 });
 
+let reviewsArray = [];
+
 function appendReview(reviewText, beanImages, date, filterTags, photosHtml) {
   const reviewHtml = `
     <div class="profile-wrap" id="review-section">
@@ -364,16 +487,19 @@ function appendReview(reviewText, beanImages, date, filterTags, photosHtml) {
         <div class="profile-name">
           <div class="bean-date-wrap">
             <div class="bean-rate">${beanImages}</div>
-            <div class="">${date}</div>
+            <div>${date}</div>
           </div>
         </div>
         <div class="filters-container">${filterTags}</div>
-        <div>${reviewText}</div>
+        <div class="review-text">${reviewText}</div>
         <div class="photo-area">${photosHtml}</div>
       </div>
     </div>`;
 
-  reviewArea.innerHTML += reviewHtml;
+  
+  reviewsArray.unshift(reviewHtml);
+
+  reviewArea.innerHTML = reviewsArray.join('');
 }
 
 function clearInputs() {
@@ -389,3 +515,9 @@ function clearInputs() {
 
  //8. check if my review updated on review section.
 
+document.addEventListener('DOMContentLoaded', () => {
+  getCafes();
+
+   const testBusinessId = 'ocLnCE2E29j-CoBQj1yaSA'; // Replace with a valid business ID
+  viewDetails(testBusinessId);
+});
