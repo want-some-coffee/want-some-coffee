@@ -226,22 +226,21 @@ const filterByReservation = () => {
   updateMapMarkers(filteredCafeList); 
 }
 
-//업데이트된 drawCafeList >> 이 함수를 적용하니 사이드바 안됨 + 가운데 리스트 안뜸 >> 범인은 이 안에 있다
 const drawCafeList = (cafeList) => {
   console.log('Drawing café list:', cafeList);
+  const cafesContainer = document.getElementById('cafe-lists-board'); 
+  const existingAlert = document.getElementById('no-results-alert');
+  if (existingAlert) {
+    existingAlert.remove();
+  }
 
-  // const cafeListElement = document.getElementById('cafe-list');
-  // // $$ 추가된 부분: 요소가 존재하는지 확인
-  // if (cafeListElement) {
-  //   cafeListElement.innerHTML = ''; // $$ 여기서 오류 발생
-  //   cafeList.forEach(cafe => {
-  //     const cafeItem = document.createElement('li');
-  //     cafeItem.textContent = cafe.name;
-  //     cafeListElement.appendChild(cafeItem);
-  //   });
-  // } else {
-  //   console.error('Element with id "cafe-list" not found');
-  // }
+  if (cafeList.length === 0) {
+    cafesContainer.innerHTML = '';
+    const alertMessage = `<div id="no-results-alert" class="alert alert-warning" role="alert" style="position: absolute; bottom: 40%; width: 20%; left: 30%;">Sorry, we couldn't find any results</div>`;
+    cafesContainer.insertAdjacentHTML('beforebegin', alertMessage); 
+    return;
+  }
+
   const cafeHTML = cafeList
     .map((cafe) => {
       // Determine the number of review images to show based on the rating
@@ -373,96 +372,64 @@ const drawCafeList = (cafeList) => {
 
   document.getElementById('cafe-lists-board').innerHTML = cafeHTML;
 };
-
-// const drawCafeList = (cafeList) => { 
-//   console.log('Drawing café list:', cafeList);
-
-//   if (cafeList.length === 0) {
-//     cafesContainer.innerHTML = `<div class="alert alert-warning" role="alert">Sorry, we couldn't find any results</div>`;
-//     return;
-//   }
-
-//   const cafeHTML = cafeList
-//     .map((cafe) => {
-//       return `
-//       <div class="row">
-//         <div class="col-lg-4 col-md-5 cafe-list"><img src="${cafe.image_url}" class="d-block w-100"></div>
-//         <div class="col-lg-8 col-md-7">
-//             <div class="data-title"><a href="${cafe.url}">${cafe.name}</a></div>
-//             <div class="data-txt">${cafe.rating} ${cafe.review_count} reviews</div>
-//             <div class="data-txt"><span class="ribbon-highlight">${cafe.categories.map((cat) => cat.title).join(', ')}</span>, ${cafe.location.city}</div>
-//             <div class="data-txt">${cafe.hours && cafe.hours[0].is_open_now ? 'Open' : 'Closed'}</div>
-//             <div class="data-txt">“${cafe.snippet_text || 'No description available.'}” more</div>
-//             <div class="data-txt">${cafe.location.address1}, ${cafe.location.city}</div>
-//         </div>
-//     </div>
-//         <hr>
-//       `;
-//     })
-//     .join('');
-
-//   document.getElementById('cafes').innerHTML = cafeHTML; 
-//   }
-
-// 사용자가 입력한 위치를 기준으로 카페를 검색하는 함수
 async function searchCafes(location) {
-  const latitude = location ? location.lat : map.getCenter().lat(); 
+  const bounds = map.getBounds(); 
+  const northeast = bounds.getNorthEast(); // 
+  const southwest = bounds.getSouthWest(); // 
+
+  const latitude = location ? location.lat : map.getCenter().lat();
   const longitude = location ? location.lng : map.getCenter().lng();
-    const cafes = await fetchCafes(latitude, longitude);
-  
-    map.markers && map.markers.forEach(marker => marker.setMap(null));
-    map.markers = [];
-  
-    cafesContainer.innerHTML = ''; 
-  
-    // const customIcon =  "css/icon/brown_coffee-bean-fill.svg"
-    cafes.forEach((cafe) => {
-      const marker = new google.maps.Marker({
-        position: { lat: cafe.coordinates.latitude, lng: cafe.coordinates.longitude },
-        map: map,
-        title: cafe.name,
-        // icon: customIcon,
-      });
+  const cafes = await fetchCafes(latitude, longitude);
 
+  map.markers && map.markers.forEach(marker => marker.setMap(null));
+  map.markers = [];
 
-      // InfoWindow 생성 
+  cafesContainer.innerHTML = '';
+
+  const visibleCafes = cafes.filter((cafe) => {
+    const cafeLat = cafe.coordinates.latitude;
+    const cafeLng = cafe.coordinates.longitude;
+
+    // 카페가 현재 보이는 지도 영역 안에 있는지 확인
+    return cafeLat <= northeast.lat() && cafeLat >= southwest.lat() && 
+           cafeLng <= northeast.lng() && cafeLng >= southwest.lng();
+  });
+
+  visibleCafes.forEach((cafe) => {
+    const cafeLat = cafe.coordinates.latitude;
+    const cafeLng = cafe.coordinates.longitude;
+      
+    const marker = new google.maps.Marker({
+      position: { lat: cafeLat, lng: cafeLng },
+      map: map,
+      title: cafe.name,
+    });
+
+    
     const infoWindow = new google.maps.InfoWindow({
-        content: `<div style="width: 250px; height: 250px;"> <!-- InfoWindow 크기 조정 *** -->
-                    <h5 style="text-align: center;">${cafe.name}</h5>
-                    <img src="${cafe.image_url}" alt="${cafe.name}" style="width: 100%; height: 120px; object-fit: cover;"> 
-                    <div style="text-align: center; margin-top: 10px;">${generateBeans(cafe.rating)}</div> 
-                  </div>`,
-        disableAutoPan: false
-      });
-  
-      marker.addListener('mouseover', () => {
-        infoWindow.open(map, marker);
-      });
-  
-      marker.addListener('mouseout', () => {
-        infoWindow.close();
-      });
+      content: `<div style="width: 250px; height: 250px;">
+                  <h5 style="text-align: center;">${cafe.name}</h5>
+                  <img src="${cafe.image_url}" alt="${cafe.name}" style="width: 100%; height: 120px; object-fit: cover;">
+                  <div style="text-align: center; margin-top: 10px;">${generateBeans(cafe.rating)}</div>
+                </div>`,
+      disableAutoPan: false
+    });
+
+    marker.addListener('mouseover', () => {
+      infoWindow.open(map, marker);
+    });
+
+    marker.addListener('mouseout', () => {
+      infoWindow.close();
+    });
 
     map.markers.push(marker);
+  });
 
-    // 카페 정보를 보여줌(아직 필요없음)
-    // const cafeElement = document.createElement('div');
-    // cafeElement.classList.add('col-md-4', 'mb-3');
-    // cafeElement.innerHTML = `
-    //   <div class="card">
-    //     <div class="card-body">
-    //       <h5 class="card-title">${cafe.name}</h5>
-    //       <p class="card-text">${cafe.location.address1}</p>
-    //       <a href="${cafe.url}" target="_blank" class="btn btn-primary">View on Yelp</a>
-    //     </div>
-    //   </div>
-    // `;
-    // cafesContainer.appendChild(cafeElement);
+  cafeList = visibleCafes; 
+  drawCafeList(cafeList); 
+}
 
-    });
-    cafeList = cafes; 
-    drawCafeList(cafeList); 
-  }
 
 // 입력된 위치를 기반으로 >> 지도 중심을 이동
 function geocodeLocation() {
