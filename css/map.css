@@ -1,0 +1,190 @@
+
+#map {
+    height: 700px;
+    width: 500px;
+    position: absolute;
+    top: 28%;
+    right: 0;
+    outline: none;
+}
+
+
+#cafes {
+    width: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    font-size: 20px;
+}
+
+
+
+.star {
+    width: 30px;
+    height: 30px;
+    margin-right: 2px;
+}
+
+
+
+#search-btn {
+    position: absolute;
+    top: 270px;
+    right: 130px;
+    z-index: 5;
+    background-color: #8C4416;
+    color: white;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+#goToMyLocation {
+    position: absolute;
+    bottom: 140px;
+    right: 12px;
+    color: #ece4da;
+    z-index: 5;
+    background-color: #8C4416;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.sidebar {
+    width: 300px;
+    height: 10000px;
+    float: left;
+    /* display: flex;
+    flex-direction: column; */
+    background-color: white;
+    padding: 10px;
+    font-size: 23px;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.filter {
+    margin-bottom: 30px;
+}
+
+.filter h3 {
+    margin-bottom: 10px;
+    font-size: 25px;
+    color: #333;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+
+}
+
+.filter ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.filter ul li {
+    margin-bottom: 5px;
+}
+
+.filter ul li input {
+    margin-right: 10px;
+}
+
+.centered-cafes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 500px;
+    margin-top: 200px;
+    max-width: 600px;
+}
+
+
+.btn-outline-primary {
+    width: 70px;
+    border-radius: 60px;
+    color: black;
+    border: 1px solid black
+}
+
+.filter-reviews+label img {
+    width: 25px;
+}
+
+.filter-reviews {
+    transform: scale(1.5);
+    margin: 10px;
+}
+
+.filter-category {
+    transform: scale(1.5);
+    margin: 10px;
+}
+
+@media (max-width: 768px) {
+    #map {
+        position: relative;
+        height: 400px;
+        width: 100%;
+        top: 0;
+        right: 0;
+    }
+    
+    #cafes {
+        position: relative;
+        width: 100%;
+        height: auto;
+        top: 0;
+        left: 0;
+    }
+    
+    .sidebar {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+        display: flex; 
+        flex-direction: row; 
+        overflow-x: auto; 
+    }
+    
+    .centered-cafes {
+        margin-left: 0;
+        margin-top: 0;
+        max-width: 100%;
+    }
+    
+    .filter {
+        margin-bottom: 20px;
+    }
+    
+    #search-btn {
+        position: relative;
+        top: 10px;
+        right: 0;
+        margin-bottom: 10px;
+    }
+    
+    #goToMyLocation {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        margin-bottom: 10px;
+    }
+    .btn-outline-primary {
+        width: 45px;
+        border-radius: 60px;
+        color: black;
+        border: 1px solid black
+    }
+}
+
