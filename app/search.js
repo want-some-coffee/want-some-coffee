@@ -1,4 +1,5 @@
-import { baseUrl, pageSize, getNews } from './news.js';
+import { baseUrl, yelpApiKey } from './apiKey.js';
+import { geCafes } from './cafes.js';
 import { setPage } from './pagination.js';
 
 // 카테고리별 검색
@@ -13,28 +14,37 @@ menus.forEach((menu) => {
   });
 });
 
-// 키워드별 검색
-// keyword value
-const searchInput = document.getElementById('search-input');
-searchInput.addEventListener('focus', () => (searchInput.value = ''));
-searchInput.addEventListener('blur', () => (searchInput.value = ''));
-searchInput.addEventListener('keydown', (event) => {
+// Search by location
+const locationInput = document.getElementById('location-input');
+locationInput.addEventListener('focus', () => (searchInput.value = ''));
+locationInput.addEventListener('blur', () => (searchInput.value = ''));
+locationInput.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     event.preventDefault();
-    getNewsByKeyword(event);
+    getCafessByLocation(event);
   }
 });
 
-export let currentCategory = '';
+// Search by keyword
+const searchInput = document.getElementById('search-input');
+const btnSsearch = document.getElementById('btn-search-input');
+btnSsearch.addEventListener('click', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    getCafessByKeyword(event);
+  }
+});
+
+export let currentLocation = '';
 export let currentKeyword = '';
 
-export const getNewsByCategory = async (event) => {
+export const getCafessByLocation = async (event) => {
   closeMenu();
 
   const category = event.target.textContent.toLowerCase();
   console.log('category: ', category);
 
-  currentCategory = category;
+  currentLocation = category;
   currentKeyword = ''; // Reset keyword
 
   const newUrl = new URL(
@@ -44,12 +54,12 @@ export const getNewsByCategory = async (event) => {
   return getNews(newUrl);
 };
 
-export const getNewsByKeyword = async (event) => {
+export const getCafessByKeyword = async (event) => {
   const keyword = searchInput.value;
   console.log('keyword', keyword);
 
   currentKeyword = keyword;
-  currentCategory = ''; // Reset category
+  currentLocation = ''; // Reset category
 
   const newUrl = new URL(`${baseUrl}&pageSize=${pageSize}&q=${currentKeyword}`);
   setPage(1); // Reset to first page
