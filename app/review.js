@@ -485,7 +485,7 @@ function appendReview(reviewText, beanImages, date, filterTags, photosHtml) {
     <div class="profile-wrap" id="review-section">
       <img class="review-profile" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSny4PnXoYsvn0pbc8QDlr3TEcculK75Px4mbWh8chRwRRcOv4N" alt="profile photo">
       <div class="profile-content">
-        <div class="fs-5 fw-bold text-capitalize text">User name</div>
+        <div class="fs-5 fw-bold text-capitalize text">Amy A</div>
         <div class="profile-name">
           <div class="bean-date-wrap">
             <div class="bean-rate">${beanImages}</div>
