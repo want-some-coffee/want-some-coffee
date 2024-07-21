@@ -6,6 +6,9 @@
 .nav-bar{
     width: 100%;
 }
+.footer{
+    margin-bottom: 0;
+}
 body{
     background-color: #F5F2EB;
 }
@@ -45,6 +48,9 @@ body{
 }
 .cafe-score>img{
     margin: 3px;
+}
+#cafe-address{
+    margin: 0;
 }
 .cafe-name-rate{
     display: flex;
