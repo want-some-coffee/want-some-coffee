@@ -5,5 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   getCafes();
 });
 
+
+
 // 푸터 연도표기
 document.getElementById('copyRightYear').textContent = new Date().getFullYear();

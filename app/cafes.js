@@ -148,7 +148,7 @@ const drawCafeList = () => {
     <div class="row">
       <div class="col-lg-4 col-md-5 cafe-list"><img src="${cafe.image_url}"></div>
       <div class="col-lg-8 col-md-7">
-          <div class="cafe-list-title"><a href="${cafe.url}">${cafe.name}</a> ${iconDollar}</div>
+          <div class="cafe-list-title"><a href="details.html">${cafe.name}</a> ${iconDollar}</div>
           <div class="cafe-list-txt">
             ${reviewImages}
             <span class="cafe-list-txt-accent">${cafe.rating}</span> 
