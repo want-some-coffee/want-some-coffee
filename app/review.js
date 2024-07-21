@@ -1,7 +1,7 @@
 
 // apikey
 const yelpApiKey =
-  "3LXhoqVQuNPN9Fbpe6XBxObTuW9XsX0cI9xiWYDdBua6blENanbIYOtELWopUeUQ361ODDlinkQ65KEV6EpUE9zBRhrZIWv6qlHfJjn85tfbuOJ8xqYFlL73o2ZZnYx";
+  "6s3duDKaT-sk9tOaM9sBvc_jcb1M1J19w8CXoXWtAmKK4hG1HN1nzn-5YOx5Xs-du_VdDUuwjE11qJILd-tXyForyhu51JwDmStUmJzQGNaF-VSEh_zUl7Ck-gacZnYx";
 const baseUrl = 'https://api.yelp.com/v3/businesses/search?location=Toronto&categories=cafes&limit=10';
 
 
@@ -20,6 +20,7 @@ const options = {
     'Content-Type': 'application/json'
   }
 };
+
 
 let cafeList = [];
 let totalResults = 0;
@@ -143,8 +144,9 @@ const updateBusinessDetails = (business) => {
   document.getElementById('cafe-image').src = business.image_url;
   document.getElementById('cafe-name').textContent = business.name;
   document.getElementById('cafe-score').textContent = business.rating;
-  document.getElementById('cafe-info').textContent = business.location.address1;
+  document.getElementById('cafe-address').textContent = business.location.address1;
 };
+
 
 // View details
 const viewDetails = async (businessId) => {
@@ -517,7 +519,6 @@ function clearInputs() {
 
 document.addEventListener('DOMContentLoaded', () => {
   getCafes();
+  updateBusinessDetails(business)
 
-   const testBusinessId = 'ocLnCE2E29j-CoBQj1yaSA'; // Replace with a valid business ID
-  viewDetails(testBusinessId);
 });
