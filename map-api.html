@@ -8,10 +8,8 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <link rel="stylesheet" href="css/index.css">
 
     <!--navbar 넣는위치 -->
 
@@ -254,6 +252,85 @@
             </div>
         </div>
     </div>
+
+    <!-- ******************** Desktop left side ******************** -->
+    <!-- <div class="col-md-2">
+        <div class="sidebar">
+            <div class="filter">
+                <h3>Price</h3>
+                <div>
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check filter-price" name="btnradio" id="filter-price-1"
+                            autocomplete="off">
+                        <label class="btn btn-outline-primary" for="filter-price-1">$</label>
+                        <input type="radio" class="btn-check filter-price" name="btnradio" id="filter-price-2"
+                            autocomplete="off">
+                        <label class="btn btn-outline-primary" for="filter-price-2">$$</label>
+                        <input type="radio" class="btn-check filter-price" name="btnradio" id="filter-price-3"
+                            autocomplete="off">
+                        <label class="btn btn-outline-primary" for="filter-price-3">$$$</label>
+                    </div>
+                </div>
+            </div>
+            <div class="filter">
+                <h3>Reviews</h3>
+                <ul>
+
+                </ul>
+            </div>
+            <div class="filter">
+                <h3>Category</h3>
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+    </div> -->
+    <!-- ******************** Center ******************** -->
+    <div class="col-md-9 col-sm-12 px-5">
+        <!-- Main Header -->
+        <div class="row">
+            <div class="main-header-copybox col-7">
+                <h1 class="main-title">Explore <span class="main-sub-title">the Perfect Cafe</span> to Enrich Your Day
+                </h1>
+                <p class="main-discription">
+                    Find the cafe that matches your mood, from cozy corners to vibrant spaces.
+                    Discover new flavours and create unforgettable moments at your local favourites
+                </p>
+            </div>
+            <div class="col-5"><img src="img/main-header.jpg" class="main-header-img"></div>
+        </div>
+
+        <section class="py-3" id="sorting">
+            <button class="button-49 p-2">All results</button>&nbsp;
+            <button class="button-53 p-2">Open Now Only</button>&nbsp;
+            <button class="button-51 p-2">Reservation Available</button>&nbsp;
+            <button class="button-52 p-2">Sort by Price</button>
+        </section>
+        <!-- Cafe Lists Board -->
+        <div class="container mt-5" id="cafe-lists-board">
+        </div>
+
+        <!-- pagination -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center" id="cafe-lists-pagination">
+            </ul>
+        </nav>
+    </div>
+    <!-- ******************** right side ******************** -->
+    <!-- <div class="col-md-3">
+        <div class="map-container">
+            <div id="map">
+
+            </div>
+            <div id="cafes" class="centered-cafes"></div>
+            <div id="search-btn" onclick="searchCafes()">Search this area</div>
+            <button id="goToMyLocation"><i class="fas fa-location-arrow"></i></button>
+        </div>
+    </div>
+    </div>
+    </div> -->
+
 
     </div>
     <div id="map"></div>
