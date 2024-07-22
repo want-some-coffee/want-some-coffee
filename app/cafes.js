@@ -42,7 +42,7 @@ export const getCafes = async (url = baseUrl) => {
 };
 
 // Draw café list
-const drawCafeList = () => {
+const drawCafeList = (cafeList) => {
   console.log('Drawing café list:', cafeList);
   const cafeHTML = cafeList
     .map((cafe) => {
@@ -145,10 +145,10 @@ const drawCafeList = () => {
       }
 
       return `
-    <div class="row">
+    <div class="row cafe-list-item">
       <div class="col-lg-4 col-md-5 cafe-list"><img src="${cafe.image_url}"></div>
       <div class="col-lg-8 col-md-7">
-          <div class="cafe-list-title"><a href="${cafe.url}">${cafe.name}</a> ${iconDollar}</div>
+          <div class="cafe-list-title"><a href="details.html">${cafe.name}</a> ${iconDollar}</div>
           <div class="cafe-list-txt">
             ${reviewImages}
             <span class="cafe-list-txt-accent">${cafe.rating}</span> 
@@ -156,7 +156,7 @@ const drawCafeList = () => {
           </div>
           <div class="cafe-list-txt"><span class="ribbon-highlight">${cafe.categories.map((cat) => cat.title).join(', ')}</span></div>
           <div class="cafe-list-txt">${cafe.location.address1}, ${cafe.location.city}</div>
-          <div class="data-txt"><span class="cafe-list-txt-accent">${isOpenNow ? 'Open now' : 'Closed now'}</span> (Hours: ${openingHours})</div>
+          <div class="data-txt"><span class="cafe-list-txt-accent">${isOpenNow ? 'Open now' : 'Closed now'}</span></div>
           <div class="cafe-list-txt-description ${descriptionClass}"><i class="fa-regular fa-comment"></i> “${description}” more</div>
           <div class="additional-info">
             ${wifi}
@@ -168,12 +168,38 @@ const drawCafeList = () => {
           </div>
       </div>
     </div>
-    <hr>
+    <hr class="cafe-list-hr">
     `;
     })
     .join('');
 
   document.getElementById('cafe-lists-board').innerHTML = cafeHTML;
+  // Limit cafe list to 5 items on mobile view
+  function limitCafeList() {
+    const cafeListItems = document.querySelectorAll('.cafe-list-item');
+    const hrItems = document.querySelectorAll('.cafe-list-hr');
+    if (window.innerWidth <= 768) {
+      cafeListItems.forEach((item, index) => {
+        if (index >= 5) {
+          item.style.display = 'none';
+          if (hrItems[index]) {
+            hrItems[index].style.display = 'none';
+          }
+        }
+      });
+    } else {
+      cafeListItems.forEach(item => {
+        item.style.display = '';
+      });
+      hrItems.forEach(hr => {
+        hr.style.display = '';
+      });
+    }
+  }
+
+  limitCafeList(); // Initial call to limit the list on page load
+
+  window.addEventListener('resize', limitCafeList); // Call on window resize
 };
 
 // Error message display function
