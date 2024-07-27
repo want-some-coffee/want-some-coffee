@@ -34,6 +34,12 @@
 
 
   <div>    
+       <!-- toggle -->
+    <div class="position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+      <div class="toggle-container" id="bd-theme-toggle" aria-label="Toggle theme" tabindex="0">
+          <div class="toggle-circle"></div>
+      </div>
+  </div>
 
     <!-- nav -->
     <section class="container side-menu-wrap">
@@ -48,6 +54,7 @@
       </div>
       <div class="head-nav">
           <div class="logo" >
+<<<<<<< HEAD
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
@@ -65,6 +72,9 @@
             />
           </svg>
           <p>Want Some Coffee</p>
+=======
+        <img src="./img/logo-basic.png" alt="logo" class="logo-img" />
+>>>>>>> ef81c262bbfb24822cc8f4b30525a104d6ebe053
         </div>
         <i class="fa-solid fa-bars" onclick="openNav()"></i>
       </div>
@@ -73,9 +83,13 @@
 
 
     <!-- menu area -->
-      <section class="container nav-bar">
+<section class="container nav-bar">
         <div class="logo">
+<<<<<<< HEAD
           <a href="index.html"><img src="img/logo-basic.png" alt="logo" class="logo-img" /></a>
+=======
+<img src="./img/logo-basic.png" alt="logo" class="logo-img" max-width="100px" max-height="100px"/>
+>>>>>>> ef81c262bbfb24822cc8f4b30525a104d6ebe053
         </div>
 
         <div class="menus">
@@ -88,6 +102,7 @@
                 My Cafe
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<<<<<<< HEAD
                   <li><a class="dropdown-item" href="review.html" aria-disabled="true">Reservation</a></li>
                   <li><a class="dropdown-item" href="bookmark.html" aria-disabled="true">My Book Mark</a></li>
                   <li><a class="dropdown-item" href="review.html">My Reviews</a></li>
@@ -97,6 +112,22 @@
             </div>
   
             <a href="contact.html" aria-disabled="true"><button>Contact</button></a>
+=======
+                    <li><a class="dropdown-item" href="about.html">Reservation</a></li>
+                    <li><a class="dropdown-item" href="book-mark.html">My Book Mark</a></li>
+                    <li><a class="dropdown-item" href="reviews.html">My Reviews</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="membership/profile.html">Profile</a></li>
+                </ul>
+            </div>
+  
+            <button>Contact</button>
+        </div>
+        <!-- Login and Sign-up buttons -->
+        <div class="d-flex align-items-center">
+            <button type="button" class="btn-login me-2" onclick="window.location.href='membership/login.html'">Login</button>
+            <button type="button" class="btn-signup" onclick="window.location.href='membership/registration.html'">Sign-up</button>
+>>>>>>> ef81c262bbfb24822cc8f4b30525a104d6ebe053
         </div>
        <!-- Login and Sign-up buttons -->
        <div class="d-flex align-items-center">
@@ -104,6 +135,7 @@
           <a href="membership/registration.html"><button type="button" class="btn-signup">Sign-up</button></a>
     </div>
       </section>
+
 
 
 
@@ -130,7 +162,16 @@
                   <p id="cafe-score">4.0</p>
                 </div>
             </div>           
+<<<<<<< HEAD
               <p id="cafe-info">cafe info</p>
+=======
+            <p id="cafe-address">780 Richards St</p>
+              <p id="cafe-info">
+                <i class="fa-solid fa-dollar-sign"></i><i class="fa-solid fa-dollar-sign"></i><br>
+                <i class="fa-solid fa-wifi"></i> Free WIFI <br>
+                <i class="fa-solid fa-square-parking"></i>&nbsp; Available </p>
+
+>>>>>>> ef81c262bbfb24822cc8f4b30525a104d6ebe053
           </div>
       </section>
 
@@ -292,10 +333,11 @@
             <h5>Cafe near you!</h5>
             <!-- Cafe cards will be inserted here by JavaScript -->
           <div class="card" id="cafe-board">
-              <img class="bd-placeholder-img card-img-top" width="100%" height="225">
+            <div>
+              <img class="bd-placeholder-img card-img-top" src="https://lh3.googleusercontent.com/p/AF1QipMO5jZlRVDilVz7xrNN-LKe4VLfGkfxKSo0xGoe=s1360-w1360-h1020"  alt="cafe-image" width="100%" height="225">
         <div class="card-body">
-          <h3 class="card-title">${cafe.name}</h3>
-          <p class="card-text">${cafe.location.address1}</p>
+          <h3 class="card-title">Little Cafe</h3>
+          <p class="card-text">1258 Robson St</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
               <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
@@ -307,11 +349,12 @@
           </div>
         </div>
       </div>
+    </div>
              <div class="card shadow-sm card-color">
-        <img class="bd-placeholder-img card-img-top"  width="100%" height="225">
+        <img class="bd-placeholder-img card-img-top"src="https://lh3.googleusercontent.com/p/AF1QipP65TnI4ZuPsZkaCHHpwrD3Oe-zJ7Jw952gzwkz=s1360-w1360-h1020" alt="cafe-image" width="100%" height="225">
         <div class="card-body">
-          <h3 class="card-title">${cafe.name}</h3>
-          <p class="card-text">${cafe.location.address1}</p>
+          <h3 class="card-title">Purebread Bakery</h3>
+          <p class="card-text">159 W Hastings St</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
               <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
@@ -323,10 +366,27 @@
           </div>
         </div>
       </div>      <div class="card shadow-sm card-color">
-        <img class="bd-placeholder-img card-img-top"  width="100%" height="225">
+        <img class="bd-placeholder-img card-img-top" src="https://lh3.googleusercontent.com/p/AF1QipNrIdfehz1Sq0O4ebcGctnUKnSsh2H-asPfBTPs=s1360-w1360-h1020" alt="cafe-image" width="100%" height="225">
         <div class="card-body">
-          <h3 class="card-title">${cafe.name}</h3>
-          <p class="card-text">${cafe.location.address1}</p>
+          <h3 class="card-title">Breka Bakery & Café </h3>
+          <p class="card-text">812 Bute St, Vancouver</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Write a review</button>
+            </div>
+            <button class="btn btn-link p-0" onclick="toggleHeart(this)">
+              <i class="fas fa-heart text-body-secondary"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+       <div class="card shadow-sm card-color">
+        <img class="bd-placeholder-img card-img-top" src="https://lh3.googleusercontent.com/p/AF1QipPwm3tKjgGdMORKlnqD8EuSrai8e5GPwUgIkbIx=s1360-w1360-h1020" alt="cafe-image" width="100%" height="225">
+        <div class="card-body">
+          <h3 class="card-title">Hello Kitty Cafe </h3>
+          <p class="card-text">1274 Robson St</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
               <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
@@ -343,7 +403,6 @@
       </div>
       </div>
       </div>
-    </lang=>
   </div>
 </section>
 
@@ -376,7 +435,6 @@
         </footer>
       </div>
     </div>
-
 
     <script src="app/review.js"></script>
     <script src="app/nav.js"></script>
