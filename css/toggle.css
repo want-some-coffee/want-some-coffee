@@ -1,0 +1,125 @@
+/* Toggle container */
+.toggle-container {
+    width: 40px;
+    height: 25px;
+    background-color: hsl(0, 0%, 31%);
+    border-radius: 25px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  /* Toggle circle */
+  .toggle-circle {
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: left 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+  
+  /* Dark mode styles */
+  .toggle-container.dark-mode {
+    background-color: #666;
+    border-color: #444; 
+  }
+  
+  .toggle-container.dark-mode .toggle-circle {
+    left: 18px; 
+    background-color: #fff;
+  }
+  
+  /* Body styles based on data-bs-theme attribute */
+  :root[data-bs-theme='dark'] {
+    background-color: #1b1e26;
+    color: #ffffff;
+  }
+  
+  :root[data-bs-theme='dark'] .search-area {
+    background-color: #333;
+    border: 1px solid #444;
+  }
+  
+  :root[data-bs-theme='dark'] .menus button {
+    color: #ffffff;
+  }
+  
+  :root[data-bs-theme='dark'] .menus button:hover {
+    background-color: #444;
+  }
+  
+  :root[data-bs-theme='dark'] .btn-login {
+    border: solid 1px #ffffff;
+    color: #ffffff;
+  }
+  
+  :root[data-bs-theme='dark'] .btn-login:hover {
+    background-color: #ffffff29;
+  }
+  
+  :root[data-bs-theme='dark'] .btn-signup {
+    background-color: #444;
+    color: white;
+  }
+  
+  :root[data-bs-theme='dark'] .btn-signup:hover {
+    background-color: #666;
+  }
+  
+  :root[data-bs-theme='dark'] .footer-wrap {
+    background-color: #1b1e26;
+    color: #a59a8c;
+  }
+  
+  :root[data-bs-theme='dark'] .footer-menu:hover {
+    color: #ffffff;
+  }
+  
+  :root[data-bs-theme='dark'] .main-title {
+    color: #ffffff;
+  }
+  
+  :root[data-bs-theme='dark'] .main-sub-title {
+    color: #ffffff;
+  }
+  
+  /* button-51 */
+  :root[data-bs-theme='dark'] .button-51 {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+  }
+  
+  :root[data-bs-theme='dark'] .button-51:before {
+    background-color: #444;
+  }
+  
+  :root[data-bs-theme='dark'] .button-51:hover:before {
+    background-color: #666;
+  }
+  
+  /* button-52 */
+  :root[data-bs-theme='dark'] .button-52 {
+    font-size: 16px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 20px 13px;
+    outline: 0;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  
+  :root[data-bs-theme='dark'] .button-52:after {
+    background-color: #444;
+  }
+  
+  :root[data-bs-theme='dark'] .button-52:hover:after {
+    background-color: #666;
+  }
+  
+  
