@@ -1,0 +1,492 @@
+body {
+    background-color: #F9F9F4;
+}
+
+
+.contactus-container{
+    width: 80%;
+    height: 100%;
+    background-color: white;
+    margin: auto;
+    margin-top: 5vh;
+    border: 5px double rgba(40, 4, 4, 0.496);
+    border-radius: 40px;
+    background-image: url("https://images.template.net/182212/coffee-border-edit-online.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.contactus-title{
+    text-align: center;
+    margin-bottom: 10px;
+    padding-top: 13vh;
+}
+
+.contactus-title2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.contactus-title3 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+.contactus-contactus{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.member-image {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    left: 0.7em;
+
+}
+
+.contactus-center {
+    display: flex;
+    justify-content: center;
+}
+.concactus-row {
+    display: flex;
+    justify-content: center;
+    width: 77%;
+    border: 3px double rgb(137, 64, 19);
+    border-radius: 40px;
+    font-size: 11px;
+}
+
+.contactus-name {
+    color: rgba(154, 59, 11, 0.866);
+    font-weight: 900;
+    text-align: center;
+    font-size: 13px;
+
+}
+
+.contactus-aboutme {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.contactus-area{
+    color: rgba(32, 10, 10, 0.712);
+    font-weight: 700;
+    text-align: center;
+}
+
+.contactus-roll{
+    color: rgba(235, 92, 20, 0.636);
+    font-weight: 900;
+    text-align: center;
+}
+
+#contactus-form {
+    text-align: center;
+    margin-top: 10px;
+    padding-bottom: 7em;
+}
+
+#contactus-yourname{
+    width: 30%;
+    margin-top: 5px;
+    margin-bottom: 0.5em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgba(44, 16, 3, 0.636);
+    position: relative;
+    left: 2px;
+    font-size: 15px;
+}
+
+
+#contactus-youremail {
+    width: 30%;
+    margin-top: 5px;
+    margin-bottom: 0.5em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgba(44, 16, 3, 0.636);
+    font-size: 15px;
+}
+
+#contactus-yourmessage {
+    width: 30%;
+    margin-top: 10px;
+    border: 1px solid rgba(44, 16, 3, 0.636);
+    margin-bottom: 0.5em;
+    outline: none;
+    font-size: 15px;
+}
+
+.contactus-fa-message {
+  position: relative;
+  top: -110px;
+}
+
+
+.btn-outline-secondary {
+    color: rgba(44, 16, 3, 0.636);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.fa-message {
+    position: relative;
+    bottom: 118px;
+}
+
+
+.bona-nova-sc-regular-italic {
+    font-family: "Bona Nova SC", serif;
+    font-style: italic;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+
+.bona-nova-sc-regular-italic2 {
+    font-family: "Bona Nova SC", serif;
+    font-style: italic;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+.contactus-about {
+    font-size: 15px;
+    font-weight: 800;
+    color: rgba(255, 166, 0, 0.695);
+  }
+
+.who-we-are {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 13px;
+
+  }
+
+
+@media (max-width: 750px) {
+    body{
+        background-color: white;
+    }
+    .contactus-container{
+        display: inline;
+        width: 100%;
+        border: none;
+    }
+
+   .member-image {
+    position: relative;
+    left: 10em;
+   }
+
+   #contactus-yourname{
+    width: 50%;
+    margin-top: 5px;
+    margin-bottom: 0.5em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgba(44, 16, 3, 0.636);
+    position: relative;
+    left: 2px;
+    font-size: 15px;
+}
+
+
+#contactus-youremail {
+    width: 50%;
+    margin-top: 5px;
+    margin-bottom: 0.5em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgba(44, 16, 3, 0.636);
+    font-size: 15px;
+}
+
+#contactus-yourmessage {
+    width: 50%;
+    margin-top: 10px;
+    border: 1px solid rgba(44, 16, 3, 0.636);
+    margin-bottom: 0.5em;
+    outline: none;
+    font-size: 15px;
+}
+}
+
+
+.container-outline {
+    height: 100vh;
+    
+}
+
+.head-nav{
+    display: flex;
+    justify-content: space-between;
+}
+.head-nav i{
+    margin: 10px;
+    cursor: pointer;
+}
+.head-nav i:hover{
+    background-color: #8c43161a;
+}
+.side-menu{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    background-color: #281C1A;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+.side-menu>button{
+        position: absolute;
+        border: none;
+        background: none;
+        color: #A59A8C;
+        top: 0;
+        right: 25px;
+        font-size: 24px;
+}
+
+.side-menu-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.side-menu-list button{
+    border: none;
+    background: none;
+    color: #A59A8C;
+    padding: 1em;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1em;
+}
+
+
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 10px;
+    color: #8C4416;
+}
+
+.logo>p {
+    margin: 0;
+}
+
+
+.menus {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    padding: 0 20px
+}
+
+.menus button {
+    background: none;
+    border: 1px;
+    margin: 10px;
+    color: #C1904E;
+}
+
+.menus button:hover {
+    background-color: bisque;
+}
+
+.btn-login {
+
+    border: solid 1px #8C4416;
+    border-radius: 5px;
+    color: #8C4416;
+    padding: 6px 12px;
+
+}
+
+.btn-login:hover {
+    background-color: #8c431629;
+}
+
+.btn-signup {
+    background-color: #8C4416;
+    color: white;
+    border-radius: 5px;
+    padding: 6px 12px;
+    border: none;
+
+}
+
+.btn-signup:hover {
+    background-color: #9E5F37;
+}
+
+.search-area {
+    display: flex;
+    justify-content: center;
+    border: 1px solid lightgray;
+    background-color: #ece4da;
+    border-radius: 50px;
+    padding: 1em;
+}
+
+.search-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.search-input{
+    border-radius: 50px;
+}
+.search-icon{
+    border-radius: 50px;
+}
+.search-btn {
+    border-radius: 50px;
+}
+
+.footer-wrap {
+    width: 100vw;
+    background-color: #281C1A;
+    margin: 0;
+    color: #a59a8c;
+    bottom: 0;
+    
+}
+
+.nav {
+    border-bottom: 1px #a59a8c;
+}
+
+.footer-menu {
+    margin: 1em;
+    color: #a59a8c;
+}
+
+.footer-menu:hover {
+    color: #d7d1c6;
+}
+
+
+.fa-x-twitter,
+.fa-instagram,
+.fa-facebook{
+  margin: 10px
+}
+
+@media (max-width:767px){
+    .nav-bar{
+        display: none;
+    }
+
+}
+@media (min-width:768px){
+.side-menu-wrap{
+    display: none;
+}
+}
+
+@media (max-width:640px){
+.search-area{
+    border: none;
+    background: none;
+}
+.search-wrap {
+    display: inline;
+    width: 100%;
+
+}
+.search-btn {
+    width: 100%;
+}
+}/* Updated CSS content */
+
+/* Common */
+.logo-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 5px solid var(--color-lignt-brown);
+}
+.section {
+    padding: 4rem;
+    text-align: center;
+}
+
+.max-container {
+    max-width: var(--size-max-width);
+    margin: auto;
+}
+
+/* toggle */
+.toggle-container {
+    width: 40px;
+    height: 25px;
+    background-color: hsl(0, 0%, 31%);
+    border-radius: 25px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  /* Toggle circle */
+.toggle-container {
+    width: 40px;
+    height: 25px;
+    background-color: #666;
+    border-radius: 25px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  }
+  
+  .toggle-circle {
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: left 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+  
+  /* Dark mode styles */
+  .toggle-container.dark-mode {
+    background-color: #666;
+    border-color: #444; 
+  }
+  
+  .toggle-container.dark-mode .toggle-circle {
+    left: 18px; 
+    background-color: #fff;
+  }
+  

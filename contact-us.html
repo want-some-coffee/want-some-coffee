@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>want some coffee?</title>
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://kit.fontawesome.com/33f8c7b48f.js" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+  <!-- css -->
+  <link rel="stylesheet" href="./css/nav.css" />
+  <link rel="stylesheet" href="css/contact-us.css">
+</head>
+
+<body>
+   <!-- toggle -->
+   <div class="position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    <div class="toggle-container" id="bd-theme-toggle" aria-label="Toggle theme" tabindex="0">
+        <div class="toggle-circle"></div>
+    </div>
+</div>
+  <div class="container-outline">
+    <!-- menu mobile -->
+    <section class="container side-menu-wrap">
+      <div class="side-menu">
+        <button class="close-btn">&times;</button>
+        <div class="side-menu-list" id="menu-list">
+          <button>Home</button>
+          <button>About</button>
+          <button>Find-Cafe</button>
+          <button>Contact</button>
+        </div>
+      </div>
+      <div class="head-nav">
+        <div class="logo" >
+          <img src="./img/logo-basic.png" alt="logo" class="logo-img" />
+        </div>
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </section>
+    
+    <!-- menu area -->
+    <section class="container nav-bar">
+      <div class="logo">
+        <div class="logo" >
+          <img src="./img/logo-basic.png" alt="logo" class="logo-img" />
+        </div>
+      </div>
+
+      <div class="menus">
+          <button>Home</button>
+          <button>About</button>
+
+          <!-- Dropdown Button -->
+          <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              My Cafe
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><a class="dropdown-item" href="about.html">Reservation</a></li>
+                  <li><a class="dropdown-item" href="book-mark.html">My Book Mark</a></li>
+                  <li><a class="dropdown-item" href="reviews.html">My Reviews</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="portfolio.html">Profile</a></li>
+              </ul>
+          </div>
+          <button>Contact</button>
+      </div>
+      <!-- Login and Sign-up buttons -->
+      <div class="d-flex align-items-center">
+          <button type="button" class="btn-login me-2">Login</button>
+          <button type="button" class="btn-signup">Sign-up</button>
+      </div>
+    </section>
+    <!-- ==================== Search area ==================== -->
+
+    <!-- main -->
+    <main>
+      <div class="contactus-container">
+        <div class="contactus-title bona-nova-sc-regular-italic2"> WHO WE ARE </div>
+
+        <div class="who-we-are">
+          <div> Coffee drinkers are looking for good cup of coffee and a nice cozy place to enjoy it, </div>
+          <div> but they don’t know where to find it.</div>
+          <div> <span class="contactus-about"> Want Some Coffee </span> finds you the best coffee shops, </div>
+          <div> gives you a selection of the shops closest to you and provides customer reviews. </div>
+        </div>
+
+        <div class="contactus-title2 bona-nova-sc-regular-italic"> Meet our team </div>
+        <div class="contactus-center">
+         <div class="row concactus-row">
+          <div class="col-lg-2 col-md-4">
+            <li class="list-group-item "> <img src="img/contact-us/member1.JPG" class="member-image"></li>
+            <li class="list-group-item contactus-name">EunMi Ahn</li>
+            <li class="list-group-item ">
+              <div class="contactus-area">Toronto, Canada</div>
+              <div class="contactus-roll">Project Owner </div>
+              <div class="contactus-aboutme">Knows how to solve the Rubik’s cube blindfolded </div>
+            </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-4">
+            <li class="list-group-item"><img src="img/contact-us/member2.JPG" class="member-image"></li>
+            <li class="list-group-item contactus-name">JeongMin Cho </li>
+            <li class="list-group-item">
+              <div class="contactus-area"> Calgary, Canada </div>
+              <div class="contactus-roll"> Scrum master</div>
+              <div class="contactus-aboutme"> French fry enthusiast and wearer of mismatched socks. <div>
+                </div>
+            </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-4">
+            <li class="list-group-item"> <img src="img/contact-us/member3.JPG" class="member-image"></li>
+            <li class="list-group-item contactus-name">MinJu Kim</li>
+            <li class="list-group-item">
+              <div class="contactus-area"> Vancouver, Canada </div>
+              <div class="contactus-roll"> UX Designer & Developer </div>
+              <div class="contactus-aboutme"> Wakes up earlier than anyone reasonably should. </div>
+            </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-4">
+            <li class="list-group-item"><img src="img/contact-us/member4.JPG" class="member-image">
+            <li class="list-group-item contactus-name">Dason Kim </li>
+            <li class="list-group-item">
+              <div class="contactus-area"> Vancouver, Canada </div>
+              <div class="contactus-roll"> Developer </div>
+              <div class="contactus-aboutme"> Strong believer that all runs should end with ice cream.</div>
+            </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-4">
+            <li class="list-group-item"><img src="img/contact-us/member5.JPG" class="member-image"></li>
+            <li class="list-group-item contactus-name"> Heejin Kim</li>
+            <li class="list-group-item">
+              <div class="contactus-area"> Vancouver, Canada </div>
+              <div class="contactus-roll"> Developer </div>
+              <div class="contactus-aboutme"> keeping life simple!</div>
+            </li>
+            </ul>
+          </div>
+        </div>
+        </div>
+
+        <div class="contactus-title3 bona-nova-sc-regular-italic"> Contact Our Team </div>
+        <div class="contactus-contactus"> Have a question for us or feedback?
+          please fill out the form to reach us.
+        </div>
+       
+      
+        <form id="contactus-form">
+          <i class="fa-solid fa-person"></i>
+          <input type="text" placeholder="Your name"  id="contactus-yourname" required>
+          <div>
+            <i class="fa-regular fa-envelope"></i>
+            <input type="email" placeholder="Your email" id="contactus-youremail">
+          </div>
+          <div> 
+            <i class="fa-solid fa-message contactus-fa-message"></i>
+            <textarea id="contactus-yourmessage" name="message" rows="5" cols="37%" placeholder="Type message here..."></textarea><br>
+          </div>
+          <button type="button" class="btn btn-outline-secondary" id="btnInsert"> Submit </button>
+        </form>
+
+        </div>
+
+        
+    </main>
+
+    <!-- footer -->
+    <div class="footer-wrap align-items-end">
+      <div class="container">
+        <footer class="py-3 my-4">
+          <ul class="nav justify-content-center pb-2 mb-3">
+            <li class="footer-menu">Home</a></li>
+            <li class="footer-menu">About</a></li>
+            <li class="footer-menu">My Cafe</a></li>
+            <li class="footer-menu">Contact</a></li>
+          </ul>
+          <hr />
+
+          <div class="d-flex flex-column flex-sm-row justify-content-between my-4">
+            <p>&copy; <span id="copyRightYear"></span> Company, Inc.</p>
+            <ul class="list-unstyled d-flex">
+              <i class="fa-brands fa-x-twitter"></i>
+              <i class="fa-brands fa-instagram"></i>
+              <i class="fa-brands fa-facebook"></i>
+        </footer>
+      </div>
+    </div>
+
+
+    <!-- javaascript -->
+    <script type="module" src="./app/main.js"></script>
+    <script src="/app/contact-us.js"> </script>
+    <script src="./app/nav.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+</body>
+
+</html>
