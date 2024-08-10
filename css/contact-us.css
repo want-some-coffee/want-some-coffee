@@ -428,3 +428,65 @@ body {
     width: 100%;
 }
 }/* Updated CSS content */
+
+/* Common */
+.logo-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 5px solid var(--color-lignt-brown);
+}
+.section {
+    padding: 4rem;
+    text-align: center;
+}
+
+.max-container {
+    max-width: var(--size-max-width);
+    margin: auto;
+}
+
+/* toggle */
+.toggle-container {
+    width: 40px;
+    height: 25px;
+    background-color: hsl(0, 0%, 31%);
+    border-radius: 25px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  /* Toggle circle */
+.toggle-container {
+    width: 40px;
+    height: 25px;
+    background-color: #666;
+    border-radius: 25px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  }
+  
+  .toggle-circle {
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: left 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+  
+  /* Dark mode styles */
+  .toggle-container.dark-mode {
+    background-color: #666;
+    border-color: #444; 
+  }
+  
+  .toggle-container.dark-mode .toggle-circle {
+    left: 18px; 
+    background-color: #fff;
+  }
+  
