@@ -24,74 +24,70 @@
     <script src="https://kit.fontawesome.com/33f8c7b48f.js" crossorigin="anonymous"></script>
     <!-- css -->
     <link rel="stylesheet" href="./css/nav.css" />
+    <link rel="stylesheet" href="css/toggle.css">
 </head>
 
 <body>
     <div class="container-outline">
         <!-- ==================== toggle ====================  -->
-        <div class="position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-            <div class="toggle-container" id="bd-theme-toggle" aria-label="Toggle theme" tabindex="0">
-                <div class="toggle-circle"></div>
-            </div>
+    <div class="position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+        <div class="toggle-container" id="bd-theme-toggle" aria-label="Toggle theme" tabindex="0">
+            <div class="toggle-circle"></div>
         </div>
-        <div class="container-outline">
-            <div class="mobile-container">
-                <!-- ==================== menu mobile====================  -->
-                <section class="container side-menu-wrap">
-                    <div class="side-menu">
-                        <button class="close-btn">&times;</button>
-                        <div class="side-menu-list" id="menu-list">
-                            <a href="index.html"><button>Home</button></a>
-                            <a href="about.html"><button>About</button></a>
-                            <a href="index.html"><button>Find-Cafe</button></a>
-                            <a href="contact.html"><button>Contact</button></a>
-                        </div>
-                    </div>
-                    <div class="head-nav">
-                        <div class="logo">
-                            <a href="index.html"><img src="img/logo-basic.png" alt="logo" class="logo-img" /></a>
-                        </div>
-                        <i class="fa-solid fa-bars"></i>
-                    </div>
-                </section>
-
-                <!-- ==================== menu area ==================== -->
-                <section class="container nav-bar">
-                    <div class="logo">
-                        <div class="logo">
-                            <a href="index.html"><img src="img/logo-basic.png" alt="logo" class="logo-img" /></a>
-                        </div>
-                    </div>
-
-                    <div class="menus">
-                        <a href="index.html"><button>Home</button></a>
-                        <a href="about.html"><button>About</button></a>
-                        <!-- Dropdown Button -->
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                My Cafe
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="review.html">Review</a></li>
-                                <li><a class="dropdown-item" href="bookmark.html">My Book Mark</a></li>
-                                <li><a class="dropdown-item" href="review.html">My Reviews</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="membership/profile.html">Profile</a></li>
-                            </ul>
-                        </div>
-                        <a href="contact.html"><button>Contact</button></a>
-                    </div>
-                    <!-- Login and Sign-up buttons -->
-                    <div class="d-flex align-items-center">
-                        <a href="membership/login.html"><button type="button" class="btn-login me-2">Login</button></a>
-                        <a href="membership/registration.html"><button type="button"
-                                class="btn-signup">Sign-up</button></a>
-                    </div>
-
-                </section>
+      </div>
+      <div class="container-outline">
+        <div class="mobile-container">
+        <!-- ==================== menu mobile====================  -->
+        <section class="container side-menu-wrap">
+          <div class="side-menu">
+            <button class="close-btn">&times;</button>
+            <div class="side-menu-list" id="menu-list">
+              <a href="index.html"><button>Home</button></a>
+              <a href="map-api.html"><button>Search cafe on Map</button></a>
+              <a href="index.html"><button>Find-Cafe</button></a>
+              <a href="contact.html"><button>Contact</button></a>
+            </div>
+          </div>
+          <div class="head-nav">
+            <div class="logo">
+              <a href="index.html"><img src="img/logo-basic.png" alt="logo" class="logo-img" /></a>
+            </div>
+            <i class="fa-solid fa-bars"></i>
+          </div>
+        </section>
+        
+        <!-- ==================== menu area ==================== -->
+        <section class="container nav-bar">
+          <div class="logo">
+            <div class="logo">
+              <a href="index.html"><img src="img/logo-basic.png" alt="logo" class="logo-img" /></a>
+            </div>
+          </div>
+          
+          <div class="menus">
+            <a href="index.html"><button>Home</button></a>
+            <a href="map-api.html"><button>Search cafe on Map</button></a>
+            <!-- Dropdown Button -->
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                My Cafe
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="review.html" aria-disabled="true">Reservation</a></li>
+                <li><a class="dropdown-item" href="bookmark.html" aria-disabled="true">My Book Mark</a></li>
+                <li><a class="dropdown-item" href="review.html">My Reviews</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="membership/profile.html">Profile</a></li>
+              </ul>
+            </div>
+            <a href="contact.html" aria-disabled="true"><button>Contact</button></a>
+          </div>
+          <!-- Login and Sign-up buttons -->
+          <div class="d-flex align-items-center">
+            <a href="membership/login.html"><button type="button" class="btn-login me-2">Login</button></a>
+            <a href="membership/registration.html"><button type="button" class="btn-signup">Sign-up</button></a>
+          </div>
+        </section>
                 <!-- ==================== Search area ==================== -->
                 <div class="container mt-4 search-area">
                     <div class="search-wrap">
@@ -319,8 +315,7 @@
     </div>
 
 
-</body>
-
+    <script type="module" src="app/toggle.js"></script>
 </body>
 
 </html>

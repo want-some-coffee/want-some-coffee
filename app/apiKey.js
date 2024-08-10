@@ -1,6 +1,6 @@
 // apikey
 export const yelpApiKey =
-  'CEiX7Ik4-D6pfISyZyYOyoLndefKlZBmXJeG4v4R0B01dhDk8niVEuOxyOQJRtaM8qkFBe2RUlF-ARlBAufVXAMqCSSVDSgoEykV54euotmC77IbkVL2ggsSvNGaZnYx';
+  'P8yrZJ5yne3K8xtnN9mu5kPWG39xDyF8LiR7W8IFcgvHpeVyuimRuUHwsAUa_gslcPCTNP3UPYU_GjeEkP22hvjCO3LvMpthn7IEFP0ooQ2yeOgkszVS9YbszuuXZnYx';
 export const baseUrl = `https://api.yelp.com/v3/businesses/search?location=Toronto&categories=cafes&limit=10`;
 
 // P8yrZJ5yne3K8xtnN9mu5kPWG39xDyF8LiR7W8IFcgvHpeVyuimRuUHwsAUa_gslcPCTNP3UPYU_GjeEkP22hvjCO3LvMpthn7IEFP0ooQ2yeOgkszVS9YbszuuXZnYx
